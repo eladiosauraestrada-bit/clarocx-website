@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: eladiosauraestrada-bit/clarocx-website
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "seiten"
+    label: "Website Inhalte"
+    files:
+      - name: "homepage"
+        label: "Homepage"
+        file: "content/homepage.yml"
+        fields:
+          - {label: "Headline", name: "headline", widget: "string"}
+          - {label: "Subheadline", name: "subheadline", widget: "string"}
+          - {label: "Beschreibung", name: "beschreibung", widget: "text"}
+          - {label: "Button Text", name: "button_text", widget: "string"}
+          - {label: "Pilot Text", name: "pilot_text", widget: "text"}
