@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClaroCX — Licht ins Business</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@200;300;400;500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --linen:      #F7F4EE;
+    --linen-mid:  #EDE8DE;
+    --linen-dark: #D8D2C4;
+    --ink:        #1E1C18;
+    --ink-soft:   #3D3A32;
+    --stone:      #8C8880;
+    --stone-light:#B8B3AA;
+    --blue:       #2E5F8A;
+    --blue-mid:   #4A7FA8;
+    --blue-pale:  #EBF2F8;
+    --white:      #FDFCF9;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--linen);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+/* ── NAV ─────────────────────────────── */
+nav {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 100;
+padding: 1.4rem 3rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+background: rgba(247,244,238,0.92);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid transparent;
+transition: border-color 0.3s;
+}
+nav.scrolled { border-color: var(–linen-dark); }
+.nav-logo { display:flex; align-items:center; gap:0.7rem; text-decoration:none; }
+.nav-logo-text { font-family:‘Libre Baskerville’,serif; font-size:1rem; font-weight:400; color:var(–ink); }
+.nav-logo-text strong { font-weight:700; }
+.nav-links { display:flex; align-items:center; gap:2.5rem; }
+.nav-links a { font-family:‘IBM Plex Mono’,monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(–stone); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(–ink); }
+.nav-cta { background:var(–ink) !important; color:var(–white) !important; padding:0.55rem 1.2rem !important; border-radius:2px; }
+.nav-cta:hover { background:var(–blue) !important; }
+
+/* ── HERO ────────────────────────────── */
+.hero {
+min-height: 100vh;
+display: grid;
+grid-template-columns: 1fr 1fr;
+align-items: center;
+padding-top: 80px;
+overflow: hidden;
+}
+@media(max-width:768px){ .hero { grid-template-columns:1fr; min-height:auto; } }
+
+.hero-left {
+padding: 6rem 4rem 6rem 6rem;
+display: flex;
+flex-direction: column;
+gap: 2.5rem;
+}
+@media(max-width:768px){ .hero-left { padding:4rem 2rem; } }
+
+.hero-eyebrow {
+font-family:‘IBM Plex Mono’,monospace;
+font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
+color:var(–blue-mid);
+opacity:0; animation: riseIn 0.8s 0.1s ease forwards;
+}
+.hero-h1 {
+font-family:‘Libre Baskerville’,serif; font-weight:400;
+font-size:clamp(2.4rem, 4.5vw, 4rem); line-height:1.12; color:var(–ink);
+opacity:0; animation: riseIn 0.8s 0.2s ease forwards;
+}
+.hero-h1 em { font-style:italic; color:var(–blue); }
+.hero-p {
+font-size:1rem; color:var(–ink-soft); line-height:1.85; max-width:440px; font-weight:300;
+opacity:0; animation: riseIn 0.8s 0.35s ease forwards;
+}
+.hero-actions {
+display:flex; align-items:center; gap:1.5rem;
+opacity:0; animation: riseIn 0.8s 0.5s ease forwards;
+}
+.btn-primary {
+background:var(–ink); color:var(–white); padding:0.9rem 2rem;
+font-family:‘IBM Plex Mono’,monospace; font-size:0.68rem; letter-spacing:0.12em;
+text-transform:uppercase; text-decoration:none; border-radius:2px;
+transition:background 0.2s, transform 0.2s;
+}
+.btn-primary:hover { background:var(–blue); transform:translateY(-1px); }
+.btn-secondary {
+font-family:‘IBM Plex Mono’,monospace; font-size:0.62rem; letter-spacing:0.12em;
+text-transform:uppercase; color:var(–stone); text-decoration:none;
+display:flex; align-items:center; gap:0.5rem; transition:color 0.2s;
+}
+.btn-secondary:hover { color:var(–ink); }
+.btn-secondary::after { content:‘↓’; }
+
+/* ── HERO RIGHT ──────────────────────── */
+.hero-right {
+display:flex; align-items:center; justify-content:center;
+padding:4rem; background:var(–ink); min-height:100vh;
+position:relative; overflow:hidden;
+}
+@media(max-width:768px){ .hero-right { min-height:60vh; } }
+.hero-right::before {
+content:’’; position:absolute; inset:0;
+background:radial-gradient(ellipse 80% 80% at 50% 50%, rgba(46,95,138,0.18) 0%, transparent 70%);
+}
+
+.icon-wrap {
+position:relative; z-index:1;
+display:flex; flex-direction:column; align-items:center; gap:2.5rem;
+opacity:0; animation: riseIn 1.2s 0.4s ease forwards;
+}
+
+/* Profile label */
+.profile-label {
+font-family:‘IBM Plex Mono’,monospace;
+font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase;
+color:rgba(255,255,255,0.25);
+height:1.2em;
+transition: opacity 0.4s;
+}
+
+/* ── SECTIONS ────────────────────────── */
+section { padding:7rem 3rem; }
+.section-inner { max-width:1000px; margin:0 auto; }
+.eyebrow { font-family:‘IBM Plex Mono’,monospace; font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(–blue-mid); margin-bottom:1.2rem; }
+h2 { font-family:‘Libre Baskerville’,serif; font-weight:400; font-size:clamp(1.8rem,3vw,2.6rem); line-height:1.2; color:var(–ink); margin-bottom:1.5rem; }
+h2 em { font-style:italic; color:var(–blue); }
+.lead { font-size:1rem; color:var(–ink-soft); line-height:1.85; max-width:560px; font-weight:300; }
+
+/* ── PROBLEM ─────────────────────────── */
+.problem { background:var(–ink); }
+.problem-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.06); margin-top:4rem; }
+@media(max-width:640px){ .problem-grid { grid-template-columns:1fr; } }
+.problem-card { padding:2.5rem; background:var(–ink); }
+.problem-num { font-family:‘IBM Plex Mono’,monospace; font-size:0.58rem; letter-spacing:0.15em; color:rgba(255,255,255,0.2); margin-bottom:1.2rem; }
+.problem-card h3 { font-family:‘Libre Baskerville’,serif; font-weight:400; font-size:1.1rem; color:var(–white); margin-bottom:0.8rem; line-height:1.3; }
+.problem-card p { font-size:0.85rem; color:rgba(255,255,255,0.4); line-height:1.8; }
+
+/* ── METHOD ──────────────────────────── */
+.method { background:var(–white); }
+.method-steps { margin-top:4rem; display:flex; flex-direction:column; gap:1px; background:var(–linen-dark); border:1px solid var(–linen-dark); }
+.step { background:var(–white); display:grid; grid-template-columns:80px 1fr 1fr; min-height:120px; align-items:stretch; }
+@media(max-width:640px){ .step { grid-template-columns:60px 1fr; } }
+.step-num { padding:2rem 1.5rem; display:flex; align-items:center; justify-content:center; border-right:1px solid var(–linen-dark); font-family:‘Libre Baskerville’,serif; font-size:1.6rem; font-weight:400; color:var(–linen-dark); }
+.step-content { padding:2rem 2.5rem; display:flex; flex-direction:column; justify-content:center; border-right:1px solid var(–linen-dark); }
+.step-title { font-family:‘Libre Baskerville’,serif; font-size:1.2rem; font-weight:400; color:var(–ink); margin-bottom:0.4rem; }
+.step-title em { font-style:italic; color:var(–blue); }
+.step-desc { font-size:0.85rem; color:var(–stone); line-height:1.7; }
+.step-detail { padding:2rem 2.5rem; display:flex; align-items:center; }
+@media(max-width:640px){ .step-detail { display:none; } }
+.step-detail p { font-family:‘IBM Plex Mono’,monospace; font-size:0.68rem; color:var(–stone-light); line-height:1.8; }
+
+/* ── FOR WHO ──────────────────────────── */
+.forwho { background:var(–linen); }
+.who-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(–linen-dark); border:1px solid var(–linen-dark); margin-top:4rem; }
+@media(max-width:640px){ .who-grid { grid-template-columns:1fr; } }
+.who-card { background:var(–white); padding:2.5rem; }
+.who-icon { font-size:1.4rem; margin-bottom:1rem; opacity:0.6; }
+.who-card h3 { font-family:‘Libre Baskerville’,serif; font-size:1rem; font-weight:400; color:var(–ink); margin-bottom:0.6rem; }
+.who-card p { font-size:0.82rem; color:var(–stone); line-height:1.75; }
+.who-note { margin-top:2rem; padding:2rem 2.5rem; background:var(–blue-pale); border:1px solid var(–linen-dark); display:flex; align-items:center; gap:2rem; }
+.who-note p { font-family:‘Libre Baskerville’,serif; font-size:1rem; font-weight:400; font-style:italic; color:var(–blue); line-height:1.5; }
+.who-note span { font-family:‘IBM Plex Mono’,monospace; font-size:0.6rem; color:var(–stone); white-space:nowrap; }
+
+/* ── CONTACT ─────────────────────────── */
+.contact { background:var(–ink); }
+.contact-inner { max-width:700px; margin:0 auto; text-align:center; display:flex; flex-direction:column; align-items:center; gap:2.5rem; }
+.contact-inner h2 { color:var(–white); }
+.contact-inner h2 em { color:var(–blue-mid); }
+.contact-inner p { color:rgba(255,255,255,0.45); font-size:0.9rem; line-height:1.85; }
+.contact-form { width:100%; display:flex; flex-direction:column; gap:1rem; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+@media(max-width:500px){ .form-row { grid-template-columns:1fr; } }
+input, textarea {
+width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+border-radius:2px; padding:1rem 1.2rem; font-family:‘Jost’,sans-serif;
+font-weight:300; font-size:0.88rem; color:var(–white); outline:none; transition:border-color 0.2s;
+}
+input::placeholder, textarea::placeholder { color:rgba(255,255,255,0.25); }
+input:focus, textarea:focus { border-color:var(–blue-mid); }
+textarea { height:120px; resize:none; }
+.form-submit {
+background:var(–blue); color:var(–white); border:none; padding:1rem 2.5rem;
+font-family:‘IBM Plex Mono’,monospace; font-size:0.68rem; letter-spacing:0.14em;
+text-transform:uppercase; border-radius:2px; cursor:pointer;
+transition:background 0.2s, transform 0.2s; align-self:flex-end;
+}
+.form-submit:hover { background:var(–blue-mid); transform:translateY(-1px); }
+.contact-alt { font-family:‘IBM Plex Mono’,monospace; font-size:0.62rem; letter-spacing:0.1em; color:rgba(255,255,255,0.2); }
+.contact-alt a { color:rgba(255,255,255,0.4); text-decoration:none; }
+.contact-alt a:hover { color:var(–white); }
+
+/* ── FOOTER ──────────────────────────── */
+footer { background:rgba(0,0,0,0.3); padding:2rem 3rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; border-top:1px solid rgba(255,255,255,0.04); }
+.footer-logo { font-family:‘Libre Baskerville’,serif; font-size:0.88rem; color:rgba(255,255,255,0.4); }
+.footer-logo strong { font-weight:700; }
+.footer-links { display:flex; gap:2rem; }
+.footer-links a { font-family:‘IBM Plex Mono’,monospace; font-size:0.55rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.2); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:rgba(255,255,255,0.5); }
+
+/* ── ANIMATIONS ──────────────────────── */
+@keyframes riseIn {
+from { opacity:0; transform:translateY(16px); }
+to   { opacity:1; transform:translateY(0); }
+}
+.reveal { opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <svg width="24" height="24" viewBox="0 0 220 220" fill="none">
+      <defs>
+        <radialGradient id="navHalo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#2E5F8A" stop-opacity="0"/>
+          <stop offset="65%"  stop-color="#2E5F8A" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#4A7FA8" stop-opacity="0.6"/>
+        </radialGradient>
+      </defs>
+      <circle cx="110" cy="110" r="108" fill="url(#navHalo)"/>
+      <circle cx="110" cy="110" r="70" fill="none" stroke="#2E5F8A" stroke-width="2" opacity="0.5"/>
+      <path d="M110,78 C122,72 138,80 142,95 C147,112 140,128 126,134 C112,140 95,136 87,122 C79,108 82,90 95,81 C101,77 105,80 110,78Z" fill="#2E5F8A" opacity="0.9"/>
+    </svg>
+    <span class="nav-logo-text">Claro<strong>CX</strong></span>
+  </a>
+  <div class="nav-links">
+    <a href="#methode">Methode</a>
+    <a href="#forwho">Für wen</a>
+    <a href="#kontakt" class="nav-cta">Gespräch anfragen</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Customer Experience · Augsburg</div>
+    <h1 class="hero-h1">Ihre Kunden<br>sagen alles.<br><em>Hören Sie zu?</em></h1>
+    <p class="hero-p">ClaroCX hört zu, versteht und übersetzt — das Erlebnis Ihrer Kunden in einen konkreten Plan, den Ihr Business diese Woche umsetzen kann.</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">Gespräch anfragen</a>
+      <a href="#methode" class="btn-secondary">Wie es funktioniert</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="icon-wrap">
+      <div class="profile-label" id="profileLabel">Analysiere Kundenprofil…</div>
+
+```
+  <canvas id="radarCanvas" width="300" height="300"></canvas>
+
+  <div style="text-align:center;">
+    <div style="font-family:'Libre Baskerville',serif; font-size:2rem; font-weight:400; color:rgba(253,252,249,0.35); line-height:1; letter-spacing:-0.01em;">Claro</div>
+    <div style="font-family:'Libre Baskerville',serif; font-size:2rem; font-weight:700; color:#FDFCF9; line-height:1; letter-spacing:-0.02em;">CX</div>
+  </div>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- PROBLEM -->
+
+<section class="problem">
+  <div class="section-inner">
+    <div class="eyebrow reveal" style="color:rgba(255,255,255,0.3);">Das Problem</div>
+    <h2 class="reveal" style="color:var(--white);">Ihre Kunden reden.<br><em>Aber wer hört wirklich zu?</em></h2>
+    <p class="lead reveal" style="color:rgba(255,255,255,0.4);">Feedback existiert überall — in Bewertungen, Gesprächen, Mustern. Die meisten Businesses sehen es, aber übersetzen es nie in Handlung.</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-num">01</div>
+        <h3>Feedback bleibt ungehört</h3>
+        <p>Google Reviews werden gelesen, aber nicht systematisch ausgewertet. Die Muster bleiben unsichtbar.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">02</div>
+        <h3>Daten ohne Bedeutung</h3>
+        <p>Zahlen sind da. Aber was bedeuten sie? Und was soll man damit tun? Diese Brücke fehlt.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">03</div>
+        <h3>Maßnahmen ohne Fokus</h3>
+        <p>Man weiß, dass etwas nicht stimmt. Aber was zuerst? Wo liegt der echte Hebel?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+
+<section class="method" id="methode">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Die Methode</div>
+    <h2 class="reveal">Hören. Verstehen. <em>Liefern.</em></h2>
+    <p class="lead reveal">Drei Schritte. Keine Theorie. Kein Berater-Kauderwelsch. Nur klare Erkenntnisse die Ihr Team sofort nutzen kann.</p>
+    <div class="method-steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title"><em>Hören</em> — Was sagen Ihre Kunden?</div>
+          <div class="step-desc">Wir analysieren systematisch Ihr Kundenfeedback — Bewertungen, Muster, wiederkehrende Themen. Alles was Ihre Kunden sagen, aber nicht direkt zu Ihnen.</div>
+        </div>
+        <div class="step-detail"><p>Wochen 1–2<br>Review-Analyse<br>Pain Point Clustering<br>CX-Diagnose</p></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title"><em>Übersetzen</em> — Was bedeutet das?</div>
+          <div class="step-desc">Wir übersetzen Kundenfeedback in Business-Sprache. Nicht Daten — Erkenntnisse. Nicht Probleme — Hebel. Klar, verständlich, priorisiert.</div>
+        </div>
+        <div class="step-detail"><p>Woche 3<br>3–5 Maßnahmen<br>Priorisiert<br>Sofort umsetzbar</p></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title"><em>Liefern</em> — Was tun wir jetzt?</div>
+          <div class="step-desc">Konkrete Handlungsempfehlungen die Ihr Team diese Woche umsetzen kann. Monatliches Tracking ob es wirkt. Keine Schubladenreporte.</div>
+        </div>
+        <div class="step-detail"><p>Monat 2–6<br>Monatlicher Check-in<br>Tracking<br>Case Study</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+
+<section class="forwho" id="forwho">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Für wen</div>
+    <h2 class="reveal">Für Businesses die<br><em>wirklich zuhören wollen.</em></h2>
+    <p class="lead reveal">ClaroCX ist nicht an eine Industrie gebunden. Überall wo Kunden Erfahrungen machen — und darüber reden — ist ClaroCX relevant.</p>
+    <div class="who-grid">
+      <div class="who-card reveal">
+        <div class="who-icon">🍽</div>
+        <h3>Restaurants & Gastronomie</h3>
+        <p>Inhabergeführte Betriebe die wissen wollen, was ihre Gäste wirklich denken — jenseits des persönlichen Gesprächs.</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon">🏨</div>
+        <h3>Hotels & Hospitality</h3>
+        <p>Häuser die Online-Bewertungen systematisch nutzen wollen — nicht nur lesen, sondern verstehen und handeln.</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon">🏪</div>
+        <h3>Lokale Businesses</h3>
+        <p>Jedes Business mit Kundenkontakt das Feedback in Wachstum übersetzen will — ohne großes Analyse-Team.</p>
+      </div>
+    </div>
+    <div class="who-note reveal">
+      <p>"Wir suchen drei Pilot-Partner in Augsburg — zu Vorzugskonditionen und mit gemeinsamer Case Study."</p>
+      <span>Pilot · 2025</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="kontakt">
+  <div class="contact-inner">
+    <div class="eyebrow reveal" style="color:rgba(255,255,255,0.3);">Kontakt</div>
+    <h2 class="reveal">Bereit für<br><em>mehr Klarheit?</em></h2>
+    <p class="reveal">Kein Sales-Call. Kein Pitch-Deck. Ein echtes Gespräch darüber was Ihre Kunden sagen — und was das für Ihr Business bedeutet.</p>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <input type="text" placeholder="Ihr Name">
+        <input type="text" placeholder="Ihr Business">
+      </div>
+      <input type="email" placeholder="Ihre E-Mail">
+      <textarea placeholder="Was möchten Sie verstehen? (optional)"></textarea>
+      <button class="form-submit">Gespräch anfragen →</button>
+    </div>
+    <div class="contact-alt reveal">Oder direkt: <a href="mailto:infoclarocx@gmail.com">infoclarocx@gmail.com</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Claro<strong>CX</strong></div>
+  <div class="footer-links">
+    <a href="#methode">Methode</a>
+    <a href="#forwho">Für wen</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="mailto:infoclarocx@gmail.com">infoclarocx@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+// ── NAV SCROLL ───────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── SCROLL REVEAL ────────────────────────
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+// ── RADAR ANIMATION ──────────────────────
+const canvas = document.getElementById('radarCanvas');
+const ctx    = canvas.getContext('2d');
+const CX     = 150, CY = 150, R = 110;
+const AXES   = 6;
+
+// 4 customer profiles — values 0..1 per axis
+const profiles = [
+  {
+    label: 'Profil A — Der Anspruchsvolle',
+    values: [0.95, 0.45, 0.80, 0.30, 0.90, 0.55],
+    color:  '#4A7FA8'
+  },
+  {
+    label: 'Profil B — Der Leidenschaftliche',
+    values: [0.60, 0.90, 0.40, 0.85, 0.50, 0.30],
+    color:  '#5A8FB8'
+  },
+  {
+    label: 'Profil C — Der Stille',
+    values: [0.50, 0.48, 0.52, 0.55, 0.45, 0.50],
+    color:  '#3A7098'
+  },
+  {
+    label: 'Profil D — Der Komplexe',
+    values: [0.90, 0.20, 0.75, 0.95, 0.15, 0.80],
+    color:  '#6A9FC8'
+  }
+];
+
+// State
+let currentProfile = 0;
+let nextProfile    = 1;
+let phase          = 'reveal';   // reveal | hold | dissolve | pause
+let progress       = 0;          // 0..1
+let frame          = 0;
+
+const REVEAL_FRAMES  = 25;
+const HOLD_FRAMES    = 28;
+const DISSOLVE_FRAMES= 18;
+const PAUSE_FRAMES   = 10;
+
+const labelEl = document.getElementById('profileLabel');
+
+// Axis angle: start from top, go clockwise
+function axisPoint(axis, radius) {
+  const angle = (axis / AXES) * Math.PI * 2 - Math.PI / 2;
+  return {
+    x: CX + Math.cos(angle) * radius,
+    y: CY + Math.sin(angle) * radius
+  };
+}
+
+// Get polygon points for a profile at a given reveal fraction (0=center, 1=full)
+function profilePoints(values, reveal) {
+  return values.map((v, i) => {
+    const r = v * (R * 0.72) * reveal;
+    return axisPoint(i, r);
+  });
+}
+
+// Interpolate between two sets of points
+function lerpPoints(a, b, t) {
+  return a.map((p, i) => ({
+    x: p.x + (b[i].x - p.x) * t,
+    y: p.y + (b[i].y - p.y) * t
+  }));
+}
+
+// Draw halo — outside to inside degradation, no ring line
+function drawHalo(alpha) {
+  const grad = ctx.createRadialGradient(CX, CY, R * 0.72, CX, CY, 0);
+  grad.addColorStop(0,    `rgba(74,127,168,${0.72 * alpha})`);
+  grad.addColorStop(0.28, `rgba(46,95,138,${0.32 * alpha})`);
+  grad.addColorStop(0.6,  `rgba(46,95,138,${0.07 * alpha})`);
+  grad.addColorStop(1,    `rgba(46,95,138,0)`);
+  ctx.beginPath();
+  ctx.arc(CX, CY, R, 0, Math.PI * 2);
+  ctx.fillStyle = grad;
+  ctx.fill();
+}
+
+// Spider web — polygonal rings + axis spokes
+function drawGrid(alpha) {
+  ctx.save();
+  const webR = R * 0.75;
+  const rings = [0.25, 0.5, 0.75, 1.0];
+
+  rings.forEach(f => {
+    ctx.beginPath();
+    for (let i = 0; i < AXES; i++) {
+      const pt = axisPoint(i, webR * f);
+      i === 0 ? ctx.moveTo(pt.x, pt.y) : ctx.lineTo(pt.x, pt.y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = `rgba(74,127,168,${0.22 * alpha})`;
+    ctx.lineWidth   = 0.9;
+    ctx.stroke();
+  });
+
+  for (let i = 0; i < AXES; i++) {
+    const pt = axisPoint(i, webR);
+    ctx.beginPath();
+    ctx.moveTo(CX, CY);
+    ctx.lineTo(pt.x, pt.y);
+    ctx.strokeStyle = `rgba(74,127,168,${0.28 * alpha})`;
+    ctx.lineWidth   = 0.9;
+    ctx.stroke();
+  }
+
+  ctx.restore();
+}
+
+// Draw filled radar shape
+function drawShape(points, color, alpha) {
+  if (!points.length) return;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+
+  // Fill
+  ctx.beginPath();
+  ctx.moveTo(points[0].x, points[0].y);
+  for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y);
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+
+  // Stroke
+  ctx.strokeStyle = 'rgba(196,216,232,0.5)';
+  ctx.lineWidth   = 1.5;
+  ctx.stroke();
+
+  // Axis dots
+  points.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(196,216,232,0.7)';
+    ctx.fill();
+  });
+
+  ctx.restore();
+}
+
+// Easing
+function easeInOut(t) {
+  return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+}
+function easeOut(t) {
+  return 1 - Math.pow(1 - t, 2.5);
+}
+
+function tick() {
+  ctx.clearRect(0, 0, 300, 300);
+  frame++;
+
+  const prof = profiles[currentProfile];
+  const next = profiles[nextProfile];
+
+  if (phase === 'reveal') {
+    progress = Math.min(frame / REVEAL_FRAMES, 1);
+    const t  = easeOut(progress);
+
+    // Halo pulses in then settles
+    const haloPulse = 0.6 + 0.4 * Math.sin(frame * 0.15);
+    drawHalo(0.5 + 0.5 * t);
+    drawGrid(t);
+
+    const pts = profilePoints(prof.values, t);
+    drawShape(pts, prof.color, t);
+
+    // Label fades in
+    labelEl.style.opacity = t;
+    labelEl.textContent   = prof.label;
+
+    if (frame >= REVEAL_FRAMES) { phase = 'hold'; frame = 0; }
+  }
+
+  else if (phase === 'hold') {
+    drawHalo(1);
+    drawGrid(1);
+    const pts = profilePoints(prof.values, 1);
+    drawShape(pts, prof.color, 1);
+    labelEl.style.opacity = 1;
+
+    // Subtle breathing
+    if (frame % 3 === 0) {
+      // tiny halo pulse
+    }
+
+    if (frame >= HOLD_FRAMES) { phase = 'dissolve'; frame = 0; }
+  }
+
+  else if (phase === 'dissolve') {
+    progress = Math.min(frame / DISSOLVE_FRAMES, 1);
+    const t  = easeInOut(progress);
+
+    // Halo stays, shape morphs to next
+    drawHalo(1 - t * 0.3);
+    drawGrid(1 - t * 0.5);
+
+    const ptsFrom = profilePoints(prof.values, 1);
+    const ptsTo   = profilePoints(next.values, 1);
+    const pts     = lerpPoints(ptsFrom, ptsTo, t);
+
+    // Blend colors
+    drawShape(pts, prof.color, 1 - t * 0.4);
+
+    // Label fades out
+    labelEl.style.opacity = 1 - t;
+
+    if (frame >= DISSOLVE_FRAMES) { phase = 'pause'; frame = 0; }
+  }
+
+  else if (phase === 'pause') {
+    // Halo alone — thinking, searching
+    const pulse = 0.4 + 0.3 * Math.sin(frame * 0.18);
+    drawHalo(pulse);
+    labelEl.style.opacity = 0;
+    labelEl.textContent   = 'Analysiere Kundenprofil…';
+
+    if (frame >= PAUSE_FRAMES) {
+      // Advance to next profile
+      currentProfile = nextProfile;
+      nextProfile    = (nextProfile + 1) % profiles.length;
+      phase = 'reveal';
+      frame = 0;
+    }
+  }
+
+  requestAnimationFrame(tick);
+}
+
+tick();
+</script>
+
+</body>
+</html>
