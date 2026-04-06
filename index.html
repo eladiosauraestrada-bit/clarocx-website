@@ -69,9 +69,9 @@ overflow: hidden;
 }
 @media(max-width:768px){
 .hero {
-grid-template-columns:1fr;
-min-height:auto;
+grid-template-columns: 1fr;
 grid-template-rows: auto auto;
+min-height: auto;
 }
 }
 
@@ -126,9 +126,16 @@ padding:4rem; background:var(–ink); min-height:100vh;
 position:relative; overflow:hidden;
 }
 @media(max-width:768px){
-.hero-right { min-height:55vw; padding:2.5rem 2rem; order:1; }
-.icon-wrap { gap:1rem; }
-#radarCanvas { width:180px !important; height:180px !important; }
+.hero-right {
+min-height: 380px;
+padding: 3rem 2rem;
+order: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.hero-left { order: 2; padding: 3rem 1.5rem; }
+.icon-wrap { gap:1.2rem; }
 }
 .hero-right::before {
 content:’’; position:absolute; inset:0;
@@ -406,7 +413,7 @@ to   { opacity:1; transform:translateY(0); }
       <textarea name="message" placeholder="Was möchten Sie verstehen? (optional)"></textarea>
       <button class="form-submit" type="submit">Gespräch anfragen →</button>
     </form>
-    <div class="contact-alt reveal">Oder direkt: <a href="/cdn-cgi/l/email-protection#670e090108040b061508041f27000a060e0b4904080a"><span class="__cf_email__" data-cfemail="2d44434b424e414c5f424e556d4a404c4441034e4240">[email&#160;protected]</span></a></div>
+    <div class="contact-alt reveal">Oder direkt: infoclarocx@gmail.com</div>
   </div>
 </section>
 
@@ -416,64 +423,63 @@ to   { opacity:1; transform:translateY(0); }
     <a href="#methode">Methode</a>
     <a href="#forwho">Für wen</a>
     <a href="#kontakt">Kontakt</a>
-    <a href="/cdn-cgi/l/email-protection#deb7b0b8b1bdb2bfacb1bda69eb9b3bfb7b2f0bdb1b3"><span class="__cf_email__" data-cfemail="82ebece4ede1eee3f0ede1fac2e5efe3ebeeace1edef">[email&#160;protected]</span></a>
+    infoclarocx@gmail.com
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-
+<script>
 // ── NAV SCROLL ───────────────────────────
-const nav = document.getElementById(‘nav’);
-window.addEventListener(‘scroll’, () => {
-nav.classList.toggle(‘scrolled’, window.scrollY > 40);
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
 });
 
 // ── SCROLL REVEAL ────────────────────────
-const reveals = document.querySelectorAll(’.reveal’);
+const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-setTimeout(() => entry.target.classList.add(‘visible’), 80);
-observer.unobserve(entry.target);
-}
-});
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), 80);
+      observer.unobserve(entry.target);
+    }
+  });
 }, { threshold: 0.12 });
 reveals.forEach(el => observer.observe(el));
 
 // ── RADAR ANIMATION ──────────────────────
-const canvas = document.getElementById(‘radarCanvas’);
-const ctx    = canvas.getContext(‘2d’);
+const canvas = document.getElementById('radarCanvas');
+const ctx    = canvas.getContext('2d');
 const CX     = 150, CY = 150, R = 110;
 const AXES   = 6;
 
 // 4 customer profiles — values 0..1 per axis
 const profiles = [
-{
-label: ‘Profil A — Der Anspruchsvolle’,
-values: [0.95, 0.45, 0.80, 0.30, 0.90, 0.55],
-color:  ‘#4A7FA8’
-},
-{
-label: ‘Profil B — Der Leidenschaftliche’,
-values: [0.60, 0.90, 0.40, 0.85, 0.50, 0.30],
-color:  ‘#5A8FB8’
-},
-{
-label: ‘Profil C — Der Stille’,
-values: [0.50, 0.48, 0.52, 0.55, 0.45, 0.50],
-color:  ‘#3A7098’
-},
-{
-label: ‘Profil D — Der Komplexe’,
-values: [0.90, 0.20, 0.75, 0.95, 0.15, 0.80],
-color:  ‘#6A9FC8’
-}
+  {
+    label: 'Profil A — Der Anspruchsvolle',
+    values: [0.95, 0.45, 0.80, 0.30, 0.90, 0.55],
+    color:  '#4A7FA8'
+  },
+  {
+    label: 'Profil B — Der Leidenschaftliche',
+    values: [0.60, 0.90, 0.40, 0.85, 0.50, 0.30],
+    color:  '#5A8FB8'
+  },
+  {
+    label: 'Profil C — Der Stille',
+    values: [0.50, 0.48, 0.52, 0.55, 0.45, 0.50],
+    color:  '#3A7098'
+  },
+  {
+    label: 'Profil D — Der Komplexe',
+    values: [0.90, 0.20, 0.75, 0.95, 0.15, 0.80],
+    color:  '#6A9FC8'
+  }
 ];
 
 // State
 let currentProfile = 0;
 let nextProfile    = 1;
-let phase          = ‘reveal’;   // reveal | hold | dissolve | pause
+let phase          = 'reveal';   // reveal | hold | dissolve | pause
 let progress       = 0;          // 0..1
 let frame          = 0;
 
@@ -482,187 +488,198 @@ const HOLD_FRAMES    = 28;
 const DISSOLVE_FRAMES= 18;
 const PAUSE_FRAMES   = 10;
 
-const labelEl = document.getElementById(‘profileLabel’);
+const labelEl = document.getElementById('profileLabel');
 
 // Axis angle: start from top, go clockwise
 function axisPoint(axis, radius) {
-const angle = (axis / AXES) * Math.PI * 2 - Math.PI / 2;
-return {
-x: CX + Math.cos(angle) * radius,
-y: CY + Math.sin(angle) * radius
-};
+  const angle = (axis / AXES) * Math.PI * 2 - Math.PI / 2;
+  return {
+    x: CX + Math.cos(angle) * radius,
+    y: CY + Math.sin(angle) * radius
+  };
 }
 
 // Get polygon points for a profile at a given reveal fraction (0=center, 1=full)
 function profilePoints(values, reveal) {
-return values.map((v, i) => {
-const r = v * (R * 0.72) * reveal;
-return axisPoint(i, r);
-});
+  return values.map((v, i) => {
+    const r = v * (R * 0.72) * reveal;
+    return axisPoint(i, r);
+  });
 }
 
 // Interpolate between two sets of points
 function lerpPoints(a, b, t) {
-return a.map((p, i) => ({
-x: p.x + (b[i].x - p.x) * t,
-y: p.y + (b[i].y - p.y) * t
-}));
+  return a.map((p, i) => ({
+    x: p.x + (b[i].x - p.x) * t,
+    y: p.y + (b[i].y - p.y) * t
+  }));
 }
 
 // Draw halo — outside to inside degradation, no ring line
 function drawHalo(alpha) {
-const grad = ctx.createRadialGradient(CX, CY, R * 0.72, CX, CY, 0);
-grad.addColorStop(0,    `rgba(74,127,168,${0.72 * alpha})`);
-grad.addColorStop(0.28, `rgba(46,95,138,${0.32 * alpha})`);
-grad.addColorStop(0.6,  `rgba(46,95,138,${0.07 * alpha})`);
-grad.addColorStop(1,    `rgba(46,95,138,0)`);
-ctx.beginPath();
-ctx.arc(CX, CY, R, 0, Math.PI * 2);
-ctx.fillStyle = grad;
-ctx.fill();
+  const grad = ctx.createRadialGradient(CX, CY, R * 0.72, CX, CY, 0);
+  grad.addColorStop(0,    `rgba(74,127,168,${0.72 * alpha})`);
+  grad.addColorStop(0.28, `rgba(46,95,138,${0.32 * alpha})`);
+  grad.addColorStop(0.6,  `rgba(46,95,138,${0.07 * alpha})`);
+  grad.addColorStop(1,    `rgba(46,95,138,0)`);
+  ctx.beginPath();
+  ctx.arc(CX, CY, R, 0, Math.PI * 2);
+  ctx.fillStyle = grad;
+  ctx.fill();
 }
 
 // Spider web — polygonal rings + axis spokes
 function drawGrid(alpha) {
-ctx.save();
-const webR = R * 0.75;
-const rings = [0.25, 0.5, 0.75, 1.0];
+  ctx.save();
+  const webR = R * 0.75;
+  const rings = [0.25, 0.5, 0.75, 1.0];
 
-rings.forEach(f => {
-ctx.beginPath();
-for (let i = 0; i < AXES; i++) {
-const pt = axisPoint(i, webR * f);
-i === 0 ? ctx.moveTo(pt.x, pt.y) : ctx.lineTo(pt.x, pt.y);
-}
-ctx.closePath();
-ctx.strokeStyle = `rgba(74,127,168,${0.22 * alpha})`;
-ctx.lineWidth   = 0.9;
-ctx.stroke();
-});
+  rings.forEach(f => {
+    ctx.beginPath();
+    for (let i = 0; i < AXES; i++) {
+      const pt = axisPoint(i, webR * f);
+      i === 0 ? ctx.moveTo(pt.x, pt.y) : ctx.lineTo(pt.x, pt.y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = `rgba(74,127,168,${0.22 * alpha})`;
+    ctx.lineWidth   = 0.9;
+    ctx.stroke();
+  });
 
-for (let i = 0; i < AXES; i++) {
-const pt = axisPoint(i, webR);
-ctx.beginPath();
-ctx.moveTo(CX, CY);
-ctx.lineTo(pt.x, pt.y);
-ctx.strokeStyle = `rgba(74,127,168,${0.28 * alpha})`;
-ctx.lineWidth   = 0.9;
-ctx.stroke();
-}
+  for (let i = 0; i < AXES; i++) {
+    const pt = axisPoint(i, webR);
+    ctx.beginPath();
+    ctx.moveTo(CX, CY);
+    ctx.lineTo(pt.x, pt.y);
+    ctx.strokeStyle = `rgba(74,127,168,${0.28 * alpha})`;
+    ctx.lineWidth   = 0.9;
+    ctx.stroke();
+  }
 
-ctx.restore();
+  ctx.restore();
 }
 
 // Draw filled radar shape
 function drawShape(points, color, alpha) {
-if (!points.length) return;
-ctx.save();
-ctx.globalAlpha = alpha;
+  if (!points.length) return;
+  ctx.save();
+  ctx.globalAlpha = alpha;
 
-// Fill
-ctx.beginPath();
-ctx.moveTo(points[0].x, points[0].y);
-for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y);
-ctx.closePath();
-ctx.fillStyle = color;
-ctx.fill();
+  // Fill
+  ctx.beginPath();
+  ctx.moveTo(points[0].x, points[0].y);
+  for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y);
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
 
-// Stroke
-ctx.strokeStyle = ‘rgba(196,216,232,0.5)’;
-ctx.lineWidth   = 1.5;
-ctx.stroke();
+  // Stroke
+  ctx.strokeStyle = 'rgba(196,216,232,0.5)';
+  ctx.lineWidth   = 1.5;
+  ctx.stroke();
 
-// Axis dots
-points.forEach(p => {
-ctx.beginPath();
-ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
-ctx.fillStyle = ‘rgba(196,216,232,0.7)’;
-ctx.fill();
-});
+  // Axis dots
+  points.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(196,216,232,0.7)';
+    ctx.fill();
+  });
 
-ctx.restore();
+  ctx.restore();
 }
 
 // Easing
 function easeInOut(t) {
-return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+  return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
 }
 function easeOut(t) {
-return 1 - Math.pow(1 - t, 2.5);
+  return 1 - Math.pow(1 - t, 2.5);
 }
 
 function tick() {
-ctx.clearRect(0, 0, 300, 300);
-frame++;
+  ctx.clearRect(0, 0, 300, 300);
+  frame++;
 
-const prof = profiles[currentProfile];
-const next = profiles[nextProfile];
+  const prof = profiles[currentProfile];
+  const next = profiles[nextProfile];
 
-if (phase === ‘reveal’) {
-progress = Math.min(frame / REVEAL_FRAMES, 1);
-const t  = easeOut(progress);
+  if (phase === 'reveal') {
+    progress = Math.min(frame / REVEAL_FRAMES, 1);
+    const t  = easeOut(progress);
 
-```
-// Halo pulses in then settles
-const haloPulse = 0.6 + 0.4 * Math.sin(frame * 0.15);
-drawHalo(0.5 + 0.5 * t);
-drawGrid(t);
+    // Halo pulses in then settles
+    const haloPulse = 0.6 + 0.4 * Math.sin(frame * 0.15);
+    drawHalo(0.5 + 0.5 * t);
+    drawGrid(t);
 
-const pts = profilePoints(prof.values, t);
-drawShape(pts, prof.color, t);
+    const pts = profilePoints(prof.values, t);
+    drawShape(pts, prof.color, t);
 
-// Label fades in
-labelEl.style.opacity = t;
-labelEl.textContent   = prof.label;
+    // Label fades in
+    labelEl.style.opacity = t;
+    labelEl.textContent   = prof.label;
 
-if (frame >= REVEAL_FRAMES) { phase = 'hold'; frame = 0; }
-```
+    if (frame >= REVEAL_FRAMES) { phase = 'hold'; frame = 0; }
+  }
 
+  else if (phase === 'hold') {
+    drawHalo(1);
+    drawGrid(1);
+    const pts = profilePoints(prof.values, 1);
+    drawShape(pts, prof.color, 1);
+    labelEl.style.opacity = 1;
+
+    // Subtle breathing
+    if (frame % 3 === 0) {
+      // tiny halo pulse
+    }
+
+    if (frame >= HOLD_FRAMES) { phase = 'dissolve'; frame = 0; }
+  }
+
+  else if (phase === 'dissolve') {
+    progress = Math.min(frame / DISSOLVE_FRAMES, 1);
+    const t  = easeInOut(progress);
+
+    // Halo stays, shape morphs to next
+    drawHalo(1 - t * 0.3);
+    drawGrid(1 - t * 0.5);
+
+    const ptsFrom = profilePoints(prof.values, 1);
+    const ptsTo   = profilePoints(next.values, 1);
+    const pts     = lerpPoints(ptsFrom, ptsTo, t);
+
+    // Blend colors
+    drawShape(pts, prof.color, 1 - t * 0.4);
+
+    // Label fades out
+    labelEl.style.opacity = 1 - t;
+
+    if (frame >= DISSOLVE_FRAMES) { phase = 'pause'; frame = 0; }
+  }
+
+  else if (phase === 'pause') {
+    // Halo alone — thinking, searching
+    const pulse = 0.4 + 0.3 * Math.sin(frame * 0.18);
+    drawHalo(pulse);
+    drawGrid(0.15 + 0.1 * Math.sin(frame * 0.18));
+    labelEl.style.opacity = 0;
+    labelEl.textContent   = 'Analysiere Kundenprofil…';
+
+    if (frame >= PAUSE_FRAMES) {
+      currentProfile = nextProfile;
+      nextProfile    = (nextProfile + 1) % profiles.length;
+      phase = 'reveal';
+      frame = 0;
+    }
+  }
+
+  requestAnimationFrame(tick);
 }
 
-else if (phase === ‘hold’) {
-drawHalo(1);
-drawGrid(1);
-const pts = profilePoints(prof.values, 1);
-drawShape(pts, prof.color, 1);
-labelEl.style.opacity = 1;
+tick();
+</script>
 
-```
-// Subtle breathing
-if (frame % 3 === 0) {
-  // tiny halo pulse
-}
-
-if (frame >= HOLD_FRAMES) { phase = 'dissolve'; frame = 0; }
-```
-
-}
-
-else if (phase === ‘dissolve’) {
-progress = Math.min(frame / DISSOLVE_FRAMES, 1);
-const t  = easeInOut(progress);
-
-```
-// Halo stays, shape morphs to next
-drawHalo(1 - t * 0.3);
-drawGrid(1 - t * 0.5);
-
-const ptsFrom = profilePoints(prof.values, 1);
-const ptsTo   = profilePoints(next.values, 1);
-const pts     = lerpPoints(ptsFrom, ptsTo, t);
-
-// Blend colors
-drawShape(pts, prof.color, 1 - t * 0.4);
-
-// Label fades out
-labelEl.style.opacity = 1 - t;
-
-if (frame >= DISSOLVE_FRAMES) { phase = 'pause'; frame = 0; }
-```
-
-}
-
-else if (phase === ‘pause’) {
-// Halo alone — thinking, searching
-const pulse = 0.4 + 0.3 * Math.sin(frame * 0.18);
-dra
+</body>
+</html>
