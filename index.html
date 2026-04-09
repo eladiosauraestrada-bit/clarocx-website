@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ClaroCX — Licht ins Business</title>
+<title>ClaroCX — Customer Experience · Augsburg</title>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -17,352 +18,382 @@
     --white:      #FDFCF9;
   }
 
-  * { margin:0; padding:0; box-sizing:border-box; }
+- { margin:0; padding:0; box-sizing:border-box; }
   a { color:inherit; text-decoration:none; }
   html { scroll-behavior:smooth; }
   body {
-    background: var(--linen);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    color: var(--dark);
-    line-height: 1.6;
-    overflow-x: hidden;
+  background: var(–linen);
+  font-family: ‘Montserrat’, sans-serif;
+  font-weight: 400;
+  color: var(–dark);
+  line-height: 1.6;
+  overflow-x: hidden;
   }
 
-  /* ── NAV ───────────────────────────── */
-  nav {
-    position: fixed; top:0; left:0; right:0; z-index:100;
-    padding: 1.2rem 2rem;
-    display: flex; align-items:center; justify-content:space-between;
-    background: rgba(247,244,238,0.96);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s;
-  }
-  nav.scrolled { border-color: var(--linen-dark); }
-  .nav-links { display:flex; align-items:center; gap:2rem; }
-  .nav-links a {
-    font-size:0.78rem; font-weight:500; color:var(--dark);
-    opacity:0.6; transition:opacity 0.2s;
-  }
-  .nav-links a:hover { opacity:1; }
-  .nav-hide { display:flex; }
-  @media(max-width:600px){ .nav-hide { display:none; } }
-  .nav-cta {
-    opacity:1 !important;
-    background: var(--blue); color: var(--linen) !important;
-    padding: 0.5rem 1.2rem; border-radius:999px;
-    font-size:0.75rem !important; font-weight:500 !important;
-    transition: box-shadow 0.2s !important;
-  }
-  .nav-cta:hover { box-shadow: 0 4px 16px rgba(46,95,138,0.3); }
+/* ── NAV ───────────────────────────── */
+nav {
+position: fixed; top:0; left:0; right:0; z-index:100;
+padding: 1.2rem 2rem;
+display: flex; align-items:center; justify-content:space-between;
+background: rgba(247,244,238,0.96);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid transparent;
+transition: border-color 0.3s;
+}
+nav.scrolled { border-color: var(–linen-dark); }
+.nav-links { display:flex; align-items:center; gap:2rem; }
+.nav-links a {
+font-size:0.78rem; font-weight:500; color:var(–dark);
+opacity:0.6; transition:opacity 0.2s;
+}
+.nav-links a:hover { opacity:1; }
+.nav-hide { display:flex; }
+@media(max-width:600px){ .nav-hide { display:none; } }
+.nav-cta {
+opacity:1 !important;
+background: var(–blue); color: var(–linen) !important;
+padding: 0.5rem 1.2rem; border-radius:999px;
+font-size:0.75rem !important; font-weight:500 !important;
+transition: box-shadow 0.2s !important;
+}
+.nav-cta:hover { box-shadow: 0 4px 16px rgba(46,95,138,0.3); }
 
-  /* ── WORDMARK ──────────────────────── */
-  .wm { display:inline-flex; align-items:center; font-family:'Montserrat',sans-serif; line-height:1; }
-  .wm-l { font-weight:300; }
-  .wm-o { display:inline-flex; align-items:center; }
-  .wm-r { font-weight:600; }
+/* ── WORDMARK ──────────────────────── */
+.wm { display:inline-flex; align-items:center; font-family:‘Montserrat’,sans-serif; line-height:1; }
+.wm-l { font-weight:300; }
+.wm-o { display:inline-flex; align-items:center; }
+.wm-r { font-weight:600; }
 
-  .wm-sm { font-size:1.05rem; }
-  .wm-sm .wm-o svg { width:16px; height:16px; }
+.wm-sm { font-size:1.05rem; }
+.wm-sm .wm-o svg { width:16px; height:16px; }
 
-  .wm-xl { font-size:clamp(2.4rem,5vw,4rem); }
-  .wm-xl .wm-o svg { width:clamp(36px,5vw,62px); height:clamp(36px,5vw,62px); }
+.wm-xl { font-size:clamp(2.4rem,5vw,4rem); }
+.wm-xl .wm-o svg { width:clamp(36px,5vw,62px); height:clamp(36px,5vw,62px); }
 
-  .wm-lg { font-size:2rem; }
-  .wm-lg .wm-o svg { width:30px; height:30px; }
+.wm-lg { font-size:2rem; }
+.wm-lg .wm-o svg { width:30px; height:30px; }
 
-  .wm-md { font-size:1.4rem; }
-  .wm-md .wm-o svg { width:22px; height:22px; }
+.wm-md { font-size:1.4rem; }
+.wm-md .wm-o svg { width:22px; height:22px; }
 
-  /* ── HERO ──────────────────────────── */
-  .hero {
-    min-height: 100vh; padding-top: 80px;
-    display: grid; grid-template-columns: 1fr 1fr;
-    align-items: center; gap: 4rem;
-    padding-left: 5rem; padding-right: 4rem; padding-bottom: 4rem;
-  }
-  @media(max-width:900px){
-    .hero { grid-template-columns:1fr; padding:100px 1.5rem 4rem; gap:3rem; }
-    .hero-icon { order:-1; display:flex; justify-content:center; }
-  }
-  .hero-content { display:flex; flex-direction:column; gap:2rem; }
-  .hero-eyebrow {
-    font-size:0.68rem; font-weight:600; letter-spacing:0.18em;
-    text-transform:uppercase; color:var(--blue);
-    opacity:0; animation: riseIn 0.8s 0.1s ease forwards;
-  }
-  .hero-wm { opacity:0; animation: riseIn 0.8s 0.2s ease forwards; }
-  .hero-location {
-    font-size:0.82rem; color:var(--stone); margin-top:0.4rem;
-    font-family:'Montserrat',sans-serif;
-  }
-  .hero h1 {
-    font-family:'Lora',serif; font-weight:400;
-    font-size:clamp(2rem,3.5vw,3rem); line-height:1.2;
-    opacity:0; animation: riseIn 0.8s 0.4s ease forwards;
-  }
-  .hero h1 em { font-style:italic; color:var(--blue); }
-  .hero-desc {
-    font-size:0.95rem; line-height:1.85; color:var(--dark); opacity:0;
-    animation: riseIn 0.8s 0.5s ease forwards;
-    max-width:460px;
-  }
-  .hero-actions {
-    display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;
-    opacity:0; animation: riseIn 0.8s 0.65s ease forwards;
-  }
-  .hero-icon { opacity:0; animation: riseIn 1s 0.15s ease forwards; }
-  @media(max-width:900px){ .hero-desc { max-width:100%; } }
+/* ── HERO ──────────────────────────── */
+.hero {
+min-height: 100vh; padding-top: 80px;
+display: grid; grid-template-columns: 1fr 1fr;
+align-items: center; gap: 4rem;
+padding-left: 5rem; padding-right: 4rem; padding-bottom: 4rem;
+}
+@media(max-width:900px){
+.hero { grid-template-columns:1fr; padding:100px 1.5rem 4rem; gap:3rem; }
+.hero-icon { order:-1; display:flex; justify-content:center; }
+}
+.hero-content { display:flex; flex-direction:column; gap:2rem; }
+.hero-eyebrow {
+font-size:0.68rem; font-weight:600; letter-spacing:0.18em;
+text-transform:uppercase; color:var(–blue);
+opacity:0; animation: riseIn 0.8s 0.1s ease forwards;
+}
+.hero-wm { opacity:0; animation: riseIn 0.8s 0.2s ease forwards; }
+.hero-location {
+font-size:0.82rem; color:var(–stone); margin-top:0.4rem;
+font-family:‘Montserrat’,sans-serif;
+}
+.hero h1 {
+font-family:‘Lora’,serif; font-weight:400;
+font-size:clamp(2rem,3.5vw,3rem); line-height:1.2;
+opacity:0; animation: riseIn 0.8s 0.4s ease forwards;
+}
+.hero h1 em { font-style:italic; color:var(–blue); }
+.hero-desc {
+font-size:0.95rem; line-height:1.85; color:var(–dark); opacity:0;
+animation: riseIn 0.8s 0.5s ease forwards;
+max-width:460px;
+}
+.hero-actions {
+display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;
+opacity:0; animation: riseIn 0.8s 0.65s ease forwards;
+}
+.hero-icon { opacity:0; animation: riseIn 1s 0.15s ease forwards; }
+@media(max-width:900px){ .hero-desc { max-width:100%; } }
 
-  .btn-primary {
-    background:var(--blue); color:var(--linen);
-    padding:0.9rem 2rem; border-radius:999px;
-    font-family:'Montserrat',sans-serif; font-size:0.82rem; font-weight:500;
-    display:inline-block; transition:box-shadow 0.2s, transform 0.2s;
-  }
-  .btn-primary:hover { box-shadow:0 6px 20px rgba(46,95,138,0.35); transform:translateY(-1px); }
-  .btn-secondary {
-    font-size:0.78rem; font-weight:500; color:var(--stone);
-    display:flex; align-items:center; gap:0.4rem; transition:color 0.2s;
-  }
-  .btn-secondary:hover { color:var(--dark); }
-  .btn-secondary::after { content:'↓'; }
+.btn-primary {
+background:var(–blue); color:var(–linen);
+padding:0.9rem 2rem; border-radius:999px;
+font-family:‘Montserrat’,sans-serif; font-size:0.82rem; font-weight:500;
+display:inline-block; transition:box-shadow 0.2s, transform 0.2s;
+}
+.btn-primary:hover { box-shadow:0 6px 20px rgba(46,95,138,0.35); transform:translateY(-1px); }
+.btn-secondary {
+font-size:0.78rem; font-weight:500; color:var(–stone);
+display:flex; align-items:center; gap:0.4rem; transition:color 0.2s;
+}
+.btn-secondary:hover { color:var(–dark); }
+.btn-secondary::after { content:‘↓’; }
 
-  /* ── SECTIONS ──────────────────────── */
-  section { padding:6rem 2rem; }
-  @media(min-width:768px){ section { padding:8rem 3rem; } }
-  .si { max-width:1000px; margin:0 auto; }
-  .si-wide { max-width:1100px; margin:0 auto; }
-  .eyebrow {
-    font-size:0.65rem; font-weight:600; letter-spacing:0.2em;
-    text-transform:uppercase; color:var(--blue); margin-bottom:1rem;
-  }
-  .sh {
-    font-family:'Lora',serif; font-weight:400;
-    font-size:clamp(1.8rem,3vw,2.6rem); line-height:1.2; margin-bottom:1rem;
-  }
-  .sh em { font-style:italic; }
-  .sp {
-    font-size:0.95rem; color:var(--stone); max-width:520px; line-height:1.85;
-  }
+/* ── SECTIONS ──────────────────────── */
+section { padding:6rem 2rem; }
+@media(min-width:768px){ section { padding:8rem 3rem; } }
+.si { max-width:1000px; margin:0 auto; }
+.si-wide { max-width:1100px; margin:0 auto; }
+.eyebrow {
+font-size:0.65rem; font-weight:600; letter-spacing:0.2em;
+text-transform:uppercase; color:var(–blue); margin-bottom:1rem;
+}
+.sh {
+font-family:‘Lora’,serif; font-weight:400;
+font-size:clamp(1.8rem,3vw,2.6rem); line-height:1.2; margin-bottom:1rem;
+}
+.sh em { font-style:italic; }
+.sp {
+font-size:0.95rem; color:var(–stone); max-width:520px; line-height:1.85;
+}
 
-  /* ── PROBLEM ───────────────────────── */
-  .problem { background:var(--dark); }
-  .problem-grid {
-    display:grid; grid-template-columns:repeat(3,1fr);
-    gap:1px; background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.08); margin-top:4rem;
-  }
-  @media(max-width:640px){ .problem-grid { grid-template-columns:1fr; } }
-  .pc { padding:2.5rem; background:var(--dark); }
-  .pc-num {
-    font-size:0.6rem; font-weight:600; letter-spacing:0.2em;
-    color:var(--blue-mid); display:block; margin-bottom:1rem;
-  }
-  .pc h3 { font-family:'Lora',serif; font-size:1.2rem; color:var(--linen); margin-bottom:0.8rem; line-height:1.3; }
-  .pc p { font-size:0.88rem; color:rgba(247,244,238,0.65); line-height:1.8; }
+/* ── PROBLEM ───────────────────────── */
+.problem { background:var(–dark); }
+.problem-grid {
+display:grid; grid-template-columns:repeat(3,1fr);
+gap:1px; background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.08); margin-top:4rem;
+}
+@media(max-width:640px){ .problem-grid { grid-template-columns:1fr; } }
+.pc { padding:2.5rem; background:var(–dark); }
+.pc-num {
+font-size:0.6rem; font-weight:600; letter-spacing:0.2em;
+color:var(–blue-mid); display:block; margin-bottom:1rem;
+}
+.pc h3 { font-family:‘Lora’,serif; font-size:1.2rem; color:var(–linen); margin-bottom:0.8rem; line-height:1.3; }
+.pc p { font-size:0.88rem; color:rgba(247,244,238,0.65); line-height:1.8; }
 
-  /* ── METHODOLOGY ───────────────────── */
-  .method { background:var(--white); }
-  .dims {
-    display:grid; grid-template-columns:repeat(3,1fr);
-    gap:1.5rem; margin-top:4rem;
-  }
-  @media(max-width:640px){ .dims { grid-template-columns:1fr; } }
-  .dim {
-    padding:2rem; border:1px solid rgba(46,95,138,0.12);
-    border-radius:16px; background:white;
-  }
-  .dim-n {
-    width:40px; height:40px; border-radius:50%;
-    background:var(--blue); color:var(--linen);
-    display:flex; align-items:center; justify-content:center;
-    font-size:0.75rem; font-weight:600; margin-bottom:1rem;
-  }
-  .dim h3 { font-family:'Montserrat',sans-serif; font-size:0.92rem; font-weight:600; margin-bottom:0.4rem; }
-  .dim p { font-size:0.82rem; color:var(--stone); line-height:1.7; }
+/* ── METHODOLOGY ───────────────────── */
+.method { background:var(–white); }
+.dims {
+display:grid; grid-template-columns:repeat(3,1fr);
+gap:1.5rem; margin-top:4rem;
+}
+@media(max-width:640px){ .dims { grid-template-columns:1fr; } }
+.dim {
+padding:2rem; border:1px solid rgba(46,95,138,0.12);
+border-radius:16px; background:white;
+}
+.dim-n {
+width:40px; height:40px; border-radius:50%;
+background:var(–blue); color:var(–linen);
+display:flex; align-items:center; justify-content:center;
+font-size:0.75rem; font-weight:600; margin-bottom:1rem;
+}
+.dim h3 { font-family:‘Montserrat’,sans-serif; font-size:0.92rem; font-weight:600; margin-bottom:0.4rem; }
+.dim p { font-size:0.82rem; color:var(–stone); line-height:1.7; }
 
-  .profiles-hd { text-align:center; margin-top:5rem; margin-bottom:4rem; }
-  .profiles-hd h2 { font-family:'Lora',serif; font-size:clamp(1.8rem,3vw,2.4rem); }
-  .profiles-hd p { font-size:0.92rem; color:var(--stone); margin-top:0.8rem; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7; }
+.profiles-hd { text-align:center; margin-top:5rem; margin-bottom:4rem; }
+.profiles-hd h2 { font-family:‘Lora’,serif; font-size:clamp(1.8rem,3vw,2.4rem); }
+.profiles-hd p { font-size:0.92rem; color:var(–stone); margin-top:0.8rem; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7; }
 
-  .profiles-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; }
-  @media(max-width:640px){ .profiles-grid { grid-template-columns:1fr 1fr; } }
-  .profile-item { display:flex; flex-direction:column; align-items:center; gap:1rem; }
-  .profile-item h4 { font-size:0.82rem; font-weight:600; text-align:center; }
+.profiles-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; }
+@media(max-width:640px){ .profiles-grid { grid-template-columns:1fr 1fr; } }
+.profile-item { display:flex; flex-direction:column; align-items:center; gap:1rem; }
+.profile-item h4 { font-size:0.82rem; font-weight:600; text-align:center; }
 
-  /* ── SERVICES ──────────────────────── */
-  .services { background:var(--linen); }
-  .svc-list { display:flex; flex-direction:column; gap:1.5rem; margin-top:4rem; }
-  .svc {
-    padding:2.5rem;
-    background:var(--white);
-    border:1px solid rgba(46,95,138,0.08);
-    border-radius:16px;
-    display:flex; gap:2rem; align-items:flex-start;
-  }
-  @media(max-width:640px){ .svc { flex-direction:column; gap:1.5rem; } }
-  .svc-num {
-    width:56px; height:56px; border-radius:50%; flex-shrink:0;
-    background:var(--blue); color:var(--linen);
-    display:flex; align-items:center; justify-content:center;
-    font-size:1.2rem; font-weight:600;
-  }
-  .svc-body { flex:1; }
-  .svc-body h3 { font-family:'Lora',serif; font-size:1.3rem; margin-bottom:0.6rem; }
-  .svc-body p { font-size:0.9rem; color:var(--stone); line-height:1.8; margin-bottom:1rem; }
-  .tags { display:flex; flex-wrap:wrap; gap:0.5rem; }
-  .tag {
-    padding:0.3rem 0.9rem; border-radius:999px; background:var(--blue-pale);
-    color:var(--blue); font-size:0.75rem; font-weight:500;
-  }
+/* ── SERVICES ──────────────────────── */
+.services { background:var(–linen); }
+.svc-list { display:flex; flex-direction:column; gap:1.5rem; margin-top:4rem; }
+.svc {
+padding:2.5rem;
+background:var(–white);
+border:1px solid rgba(46,95,138,0.08);
+border-radius:16px;
+display:flex; gap:2rem; align-items:flex-start;
+}
+@media(max-width:640px){ .svc { flex-direction:column; gap:1.5rem; } }
+.svc-num {
+width:56px; height:56px; border-radius:50%; flex-shrink:0;
+background:var(–blue); color:var(–linen);
+display:flex; align-items:center; justify-content:center;
+font-size:1.2rem; font-weight:600;
+}
+.svc-body { flex:1; }
+.svc-body h3 { font-family:‘Lora’,serif; font-size:1.3rem; margin-bottom:0.6rem; }
+.svc-body p { font-size:0.9rem; color:var(–stone); line-height:1.8; margin-bottom:1rem; }
+.tags { display:flex; flex-wrap:wrap; gap:0.5rem; }
+.tag {
+padding:0.3rem 0.9rem; border-radius:999px; background:var(–blue-pale);
+color:var(–blue); font-size:0.75rem; font-weight:500;
+}
 
-  /* ── FOR WHO ───────────────────────── */
-  .forwho { background:var(--linen); border-top:1px solid var(--linen-dark); }
-  .who-grid {
-    display:grid; grid-template-columns:repeat(3,1fr);
-    gap:1px; background:var(--linen-dark);
-    border:1px solid var(--linen-dark); margin-top:4rem;
-  }
-  @media(max-width:640px){ .who-grid { grid-template-columns:1fr; } }
-  .wc { background:var(--white); padding:2.5rem; }
-  .wc-icon { font-size:1.6rem; margin-bottom:1rem; }
-  .wc h3 { font-family:'Lora',serif; font-size:1rem; margin-bottom:0.6rem; }
-  .wc p { font-size:0.85rem; color:var(--stone); line-height:1.75; }
-  .who-note {
-    margin-top:2rem; padding:2rem 2.5rem;
-    background:var(--blue-pale);
-    border:1px solid rgba(46,95,138,0.15); border-radius:4px;
-  }
-  .who-note p { font-family:'Lora',serif; font-size:1rem; font-style:italic; color:var(--blue); line-height:1.6; }
-  .who-note span { font-size:0.65rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--stone); display:block; margin-top:0.5rem; }
+/* ── DATA SECTION ──────────────────── */
+.data-section { background:var(–blue-pale); border-top:1px solid rgba(46,95,138,0.15); border-bottom:1px solid rgba(46,95,138,0.15); }
+.data-inner { max-width:700px; }
+.data-placeholder {
+margin-top:3rem; padding:3rem;
+border:1px dashed rgba(46,95,138,0.3);
+border-radius:16px; background:rgba(255,255,255,0.5);
+text-align:center;
+}
+.data-placeholder p {
+font-size:0.85rem; color:var(–stone); line-height:1.8;
+font-style:italic;
+}
 
-  /* ── CONTACT ───────────────────────── */
-  .contact { background:var(--dark); }
-  .contact-inner {
-    max-width:700px; margin:0 auto; text-align:center;
-    display:flex; flex-direction:column; align-items:center; gap:2.5rem;
-  }
-  .contact-inner h2 { font-family:'Lora',serif; font-size:clamp(2rem,4vw,3rem); color:var(--linen); font-style:italic; }
-  .contact-inner > p { font-size:0.95rem; color:rgba(247,244,238,0.7); line-height:1.85; }
-  .contact-actions { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; }
-  .btn-outline {
-    background:transparent; color:var(--linen);
-    border:2px solid rgba(247,244,238,0.35);
-    padding:0.9rem 2rem; border-radius:999px;
-    font-family:'Montserrat',sans-serif; font-size:0.82rem; font-weight:500;
-    transition:border-color 0.2s;
-  }
-  .btn-outline:hover { border-color:var(--linen); }
-  .contact-footer { padding-top:3rem; border-top:1px solid rgba(255,255,255,0.1); width:100%; }
-  .contact-footer p { font-size:0.78rem; color:rgba(247,244,238,0.4); text-align:center; font-weight:500; letter-spacing:0.05em; margin-top:1rem; }
+/* ── FOR WHO ───────────────────────── */
+.forwho { background:var(–linen); border-top:1px solid var(–linen-dark); }
+.who-grid {
+display:grid; grid-template-columns:repeat(3,1fr);
+gap:1px; background:var(–linen-dark);
+border:1px solid var(–linen-dark); margin-top:4rem;
+}
+@media(max-width:640px){ .who-grid { grid-template-columns:1fr; } }
+.wc { background:var(–white); padding:2.5rem; }
+.wc-icon { font-size:1.6rem; margin-bottom:1rem; }
+.wc h3 { font-family:‘Lora’,serif; font-size:1rem; margin-bottom:0.6rem; }
+.wc p { font-size:0.85rem; color:var(–stone); line-height:1.75; }
+.who-note {
+margin-top:2rem; padding:2rem 2.5rem;
+background:var(–blue-pale);
+border:1px solid rgba(46,95,138,0.15); border-radius:4px;
+}
+.who-note p { font-family:‘Lora’,serif; font-size:1rem; font-style:italic; color:var(–blue); line-height:1.6; }
+.who-note span { font-size:0.65rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(–stone); display:block; margin-top:0.5rem; }
 
-  /* ── BRAND GUIDELINES ──────────────── */
-  .guidelines { background:var(--linen); border-top:3px solid var(--dark); }
-  .gl-title {
-    font-family:'Lora',serif; font-size:clamp(2rem,4vw,3rem);
-    font-style:italic; margin-bottom:0.5rem;
-  }
-  .gl-sub { font-size:0.9rem; color:var(--stone); }
+/* ── ABOUT ─────────────────────────── */
+.about { background:var(–white); }
+.about-inner {
+display:grid; grid-template-columns:1fr 2fr;
+gap:6rem; align-items:start; max-width:1000px; margin:0 auto;
+}
+@media(max-width:700px){ .about-inner { grid-template-columns:1fr; gap:3rem; } }
+.about-icon { display:flex; justify-content:center; padding-top:0.5rem; }
+.about-text p {
+font-size:0.95rem; line-height:1.9; color:var(–dark);
+margin-bottom:1.4rem;
+}
+.about-text p:last-child { margin-bottom:0; }
 
-  .gl-section { margin-top:4rem; }
-  .gl-section-title {
-    font-family:'Montserrat',sans-serif; font-size:0.65rem;
-    font-weight:600; letter-spacing:0.2em; text-transform:uppercase;
-    color:var(--blue); margin-bottom:2rem;
-    padding-bottom:0.75rem; border-bottom:1px solid var(--linen-dark);
-  }
+/* ── CONTACT ───────────────────────── */
+.contact { background:var(–dark); }
+.contact-inner {
+max-width:700px; margin:0 auto; text-align:center;
+display:flex; flex-direction:column; align-items:center; gap:2.5rem;
+}
+.contact-inner h2 { font-family:‘Lora’,serif; font-size:clamp(2rem,4vw,3rem); color:var(–linen); font-style:italic; }
+.contact-inner > p { font-size:0.95rem; color:rgba(247,244,238,0.7); line-height:1.85; }
+.contact-actions { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; }
+.btn-outline {
+background:transparent; color:var(–linen);
+border:2px solid rgba(247,244,238,0.35);
+padding:0.9rem 2rem; border-radius:999px;
+font-family:‘Montserrat’,sans-serif; font-size:0.82rem; font-weight:500;
+transition:border-color 0.2s;
+}
+.btn-outline:hover { border-color:var(–linen); }
+.contact-footer { padding-top:3rem; border-top:1px solid rgba(255,255,255,0.1); width:100%; }
+.contact-footer p { font-size:0.78rem; color:rgba(247,244,238,0.4); text-align:center; font-weight:500; letter-spacing:0.05em; margin-top:1rem; }
 
-  /* Logo grid */
-  .logo-grid {
-    display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-    gap:1px; background:var(--linen-dark); border:1px solid var(--linen-dark);
-  }
-  .logo-tile {
-    padding:3rem 2rem;
-    display:flex; flex-direction:column; align-items:center; gap:1.5rem;
-  }
-  .lt-light { background:var(--white); }
-  .lt-dark   { background:var(--dark); }
-  .lt-blue   { background:var(--blue); }
-  .lt-linen  { background:var(--linen); }
-  .logo-tile-label {
-    font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase;
-    color:var(--stone);
-  }
-  .lt-dark .logo-tile-label, .lt-blue .logo-tile-label { color:rgba(255,255,255,0.35); }
+/* ── BRAND GUIDELINES ──────────────── */
+.guidelines { background:var(–linen); border-top:3px solid var(–dark); }
+.gl-title {
+font-family:‘Lora’,serif; font-size:clamp(2rem,4vw,3rem);
+font-style:italic; margin-bottom:0.5rem;
+}
+.gl-sub { font-size:0.9rem; color:var(–stone); }
 
-  /* Color swatches */
-  .swatches {
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-    gap:1px; background:var(--linen-dark); border:1px solid var(--linen-dark);
-  }
-  .sw { display:flex; flex-direction:column; }
-  .sw-color { height:100px; }
-  .sw-info { background:var(--white); padding:1rem; }
-  .sw-name { font-weight:600; font-size:0.82rem; }
-  .sw-hex { font-family:'Montserrat',monospace; font-size:0.7rem; color:var(--stone); margin-top:0.15rem; }
-  .sw-role { font-size:0.7rem; color:var(--linen-dark); margin-top:0.1rem; }
+.gl-section { margin-top:4rem; }
+.gl-section-title {
+font-family:‘Montserrat’,sans-serif; font-size:0.65rem;
+font-weight:600; letter-spacing:0.2em; text-transform:uppercase;
+color:var(–blue); margin-bottom:2rem;
+padding-bottom:0.75rem; border-bottom:1px solid var(–linen-dark);
+}
 
-  /* Type samples */
-  .type-rows { display:flex; flex-direction:column; gap:1px; background:var(--linen-dark); border:1px solid var(--linen-dark); }
-  .type-row {
-    background:var(--white); padding:2.5rem 2rem;
-    display:grid; grid-template-columns:160px 1fr; gap:2rem; align-items:center;
-  }
-  @media(max-width:600px){ .type-row { grid-template-columns:1fr; } }
-  .type-meta { font-size:0.65rem; color:var(--stone); font-family:'Montserrat',monospace; line-height:2; }
+/* Logo grid */
+.logo-grid {
+display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+gap:1px; background:var(–linen-dark); border:1px solid var(–linen-dark);
+}
+.logo-tile {
+padding:3rem 2rem;
+display:flex; flex-direction:column; align-items:center; gap:1.5rem;
+}
+.lt-light { background:var(–white); }
+.lt-dark   { background:var(–dark); }
+.lt-blue   { background:var(–blue); }
+.lt-linen  { background:var(–linen); }
+.logo-tile-label {
+font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase;
+color:var(–stone);
+}
+.lt-dark .logo-tile-label, .lt-blue .logo-tile-label { color:rgba(255,255,255,0.35); }
 
-  /* Icon showcase in guidelines */
-  .icon-showcase {
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-    gap:1px; background:var(--linen-dark); border:1px solid var(--linen-dark);
-  }
-  .ic-tile {
-    padding:3rem 1.5rem;
-    display:flex; flex-direction:column; align-items:center; gap:1.5rem;
-  }
-  .ic-dark { background:var(--dark); }
-  .ic-light { background:var(--white); }
-  .ic-label { font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--stone); }
-  .ic-dark .ic-label { color:rgba(255,255,255,0.3); }
+/* Color swatches */
+.swatches {
+display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:1px; background:var(–linen-dark); border:1px solid var(–linen-dark);
+}
+.sw { display:flex; flex-direction:column; }
+.sw-color { height:100px; }
+.sw-info { background:var(–white); padding:1rem; }
+.sw-name { font-weight:600; font-size:0.82rem; }
+.sw-hex { font-family:‘Montserrat’,monospace; font-size:0.7rem; color:var(–stone); margin-top:0.15rem; }
+.sw-role { font-size:0.7rem; color:var(–linen-dark); margin-top:0.1rem; }
 
-  /* Voice pairs */
-  .voice-table { border:1px solid var(--linen-dark); overflow:hidden; margin-top:2rem; }
-  .voice-head { display:grid; grid-template-columns:1fr 1fr; background:var(--dark); }
-  .vh { padding:0.9rem 2rem; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--stone); }
-  .voice-pair { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--linen-dark); border-bottom:1px solid var(--linen-dark); }
-  .voice-pair:last-child { border-bottom:none; }
-  .vp-yes { background:var(--white); padding:1.8rem 2rem; font-size:0.88rem; color:var(--dark); line-height:1.75; }
-  .vp-no { background:var(--linen); padding:1.8rem 2rem; font-size:0.88rem; color:var(--stone); line-height:1.75; text-decoration:line-through; text-decoration-color:var(--linen-dark); }
+/* Type samples */
+.type-rows { display:flex; flex-direction:column; gap:1px; background:var(–linen-dark); border:1px solid var(–linen-dark); }
+.type-row {
+background:var(–white); padding:2.5rem 2rem;
+display:grid; grid-template-columns:160px 1fr; gap:2rem; align-items:center;
+}
+@media(max-width:600px){ .type-row { grid-template-columns:1fr; } }
+.type-meta { font-size:0.65rem; color:var(–stone); font-family:‘Montserrat’,monospace; line-height:2; }
 
-  /* ── FOOTER ────────────────────────── */
-  footer {
-    background:rgba(0,0,0,0.25); padding:2rem;
-    display:flex; align-items:center; justify-content:space-between;
-    flex-wrap:wrap; gap:1rem;
-    border-top:1px solid rgba(255,255,255,0.06);
-  }
-  .fl { display:flex; gap:2rem; flex-wrap:wrap; }
-  .fl a {
-    font-size:0.7rem; font-weight:500; letter-spacing:0.08em;
-    text-transform:uppercase; color:rgba(247,244,238,0.45); transition:color 0.2s;
-  }
-  .fl a:hover { color:var(--linen); }
+/* Icon showcase in guidelines */
+.icon-showcase {
+display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:1px; background:var(–linen-dark); border:1px solid var(–linen-dark);
+}
+.ic-tile {
+padding:3rem 1.5rem;
+display:flex; flex-direction:column; align-items:center; gap:1.5rem;
+}
+.ic-dark { background:var(–dark); }
+.ic-light { background:var(–white); }
+.ic-label { font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(–stone); }
+.ic-dark .ic-label { color:rgba(255,255,255,0.3); }
 
-  /* ── ANIMATIONS ─────────────────────── */
-  @keyframes riseIn {
-    from { opacity:0; transform:translateY(14px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-  .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity:1; transform:translateY(0); }
+/* Voice pairs */
+.voice-table { border:1px solid var(–linen-dark); overflow:hidden; margin-top:2rem; }
+.voice-head { display:grid; grid-template-columns:1fr 1fr; background:var(–dark); }
+.vh { padding:0.9rem 2rem; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(–stone); }
+.voice-pair { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(–linen-dark); border-bottom:1px solid var(–linen-dark); }
+.voice-pair:last-child { border-bottom:none; }
+.vp-yes { background:var(–white); padding:1.8rem 2rem; font-size:0.88rem; color:var(–dark); line-height:1.75; }
+.vp-no { background:var(–linen); padding:1.8rem 2rem; font-size:0.88rem; color:var(–stone); line-height:1.75; text-decoration:line-through; text-decoration-color:var(–linen-dark); }
+
+/* ── FOOTER ────────────────────────── */
+footer {
+background:rgba(0,0,0,0.25); padding:2rem;
+display:flex; align-items:center; justify-content:space-between;
+flex-wrap:wrap; gap:1rem;
+border-top:1px solid rgba(255,255,255,0.06);
+}
+.fl { display:flex; gap:2rem; flex-wrap:wrap; }
+.fl a {
+font-size:0.7rem; font-weight:500; letter-spacing:0.08em;
+text-transform:uppercase; color:rgba(247,244,238,0.45); transition:color 0.2s;
+}
+.fl a:hover { color:var(–linen); }
+
+/* ── ANIMATIONS ─────────────────────── */
+@keyframes riseIn {
+from { opacity:0; transform:translateY(14px); }
+to   { opacity:1; transform:translateY(0); }
+}
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
 </style>
+
 </head>
 <body>
 
 <!-- ══ NAV ══════════════════════════════════════ -->
+
 <nav id="nav">
   <a href="#">
     <div class="wm wm-sm">
@@ -374,13 +405,13 @@
   <div class="nav-links">
     <a href="#methode"    class="nav-hide">Methode</a>
     <a href="#forwho"     class="nav-hide">Für wen</a>
-    <a href="#guidelines" class="nav-hide">Brand</a>
-    <a href="#kontakt"    class="nav-cta">Gespräch anfragen</a>
+    <a href="#ueber"      class="nav-hide">Über mich</a>
+    <a href="#kontakt"    class="nav-cta">Jetzt melden</a>
   </div>
 </nav>
 
-
 <!-- ══ HERO ═════════════════════════════════════ -->
+
 <div class="hero">
   <div class="hero-icon">
     <canvas id="heroCanvas" width="380" height="380"></canvas>
@@ -395,123 +426,136 @@
       </div>
       <div class="hero-location">Augsburg, Germany</div>
     </div>
-    <h1>Ihre Kunden sagen alles.<br><em>Hören Sie zu?</em></h1>
-    <p class="hero-desc">ClaroCX hört zu, versteht und übersetzt — das Erlebnis Ihrer Kunden in einen konkreten Plan, den Ihr Business diese Woche umsetzen kann.</p>
+    <h1>Deine Gäste entscheiden<br>nach jedem Besuch.<br><em>Weißt du, was sie bewegt?</em></h1>
+    <p class="hero-desc">ClaroCX macht sichtbar, was zwischen Erlebnis und Entscheidung passiert — damit aus zufriedenen Gästen treue Stammkunden werden.</p>
     <div class="hero-actions">
-      <a href="#kontakt" class="btn-primary">Gespräch anfragen</a>
+      <a href="#kontakt" class="btn-primary">Jetzt melden</a>
       <a href="#methode" class="btn-secondary">Wie es funktioniert</a>
     </div>
   </div>
 </div>
 
-
 <!-- ══ PROBLEM ══════════════════════════════════ -->
+
 <section class="problem">
   <div class="si">
     <div class="eyebrow reveal" style="color:rgba(247,244,238,0.45)">Das Problem</div>
-    <h2 class="sh reveal" style="color:var(--linen)">Ihre Kunden reden.<br><em>Aber wer hört wirklich zu?</em></h2>
-    <p class="sp reveal" style="color:rgba(247,244,238,0.62)">Feedback existiert überall — in Bewertungen, Gesprächen, Mustern. Die meisten Businesses sehen es, aber übersetzen es nie in Handlung.</p>
+    <h2 class="sh reveal" style="color:var(--linen)">Ein Restaurant zu führen<br><em>ist komplex.</em></h2>
+    <p class="sp reveal" style="color:rgba(247,244,238,0.62)">Küche, Service, Personal, Einkauf, Bewertungen — alles gleichzeitig, jeden Tag. Die meisten Entscheidungen laufen auf Erfahrung und Bauchgefühl. Und das funktioniert. Bis zu einem Punkt.</p>
     <div class="problem-grid">
       <div class="pc reveal">
         <span class="pc-num">01</span>
-        <h3>Feedback bleibt ungehört</h3>
-        <p>Google Reviews werden gelesen, aber nicht systematisch ausgewertet. Die Muster bleiben unsichtbar.</p>
+        <h3>Bauchgefühl hat eine Grenze</h3>
+        <p>Es sagt dir nicht, warum ein Gast nicht wiederkommt. Und nicht, wo auf dem Weg vom ersten Eindruck bis zum Abschied etwas verloren geht.</p>
       </div>
       <div class="pc reveal">
         <span class="pc-num">02</span>
-        <h3>Daten ohne Bedeutung</h3>
-        <p>Zahlen sind da. Aber was bedeuten sie? Und was soll man damit tun? Diese Brücke fehlt.</p>
+        <h3>Reibung bleibt unsichtbar</h3>
+        <p>Eine zu lange Wartezeit. Ein erster Eindruck, der nicht passt. Eine Bewertung, die niemand beantwortet. Kleine Dinge — aber genau diese entscheiden über Wiederkommen oder nicht.</p>
       </div>
       <div class="pc reveal">
         <span class="pc-num">03</span>
-        <h3>Maßnahmen ohne Fokus</h3>
-        <p>Man weiß, dass etwas nicht stimmt. Aber was zuerst? Wo liegt der echte Hebel?</p>
+        <h3>Man ist zu nah dran</h3>
+        <p>Zu beschäftigt. Zu drin. Der externe Blick — strukturiert, datenbasiert, aus der Gästeperspektive — fehlt. Genau das bringt ClaroCX.</p>
       </div>
     </div>
   </div>
 </section>
 
-
 <!-- ══ METHODOLOGY ══════════════════════════════ -->
+
 <section class="method" id="methode">
   <div class="si-wide">
     <div class="eyebrow reveal">Die Methode</div>
-    <h2 class="sh reveal">Das Framework.<br><em>Sechs Dimensionen. Ein Bild.</em></h2>
-    <p class="sp reveal">Sechs universelle Dimensionen der Kundenerfahrung. Eine konsistente Methode. Unendliche Erkenntnisse über die Menschen die am meisten zählen.</p>
+    <h2 class="sh reveal">Drei Phasen.<br><em>Kein Bauchgefühl. Keine Vermutungen.</em></h2>
+    <p class="sp reveal">Bevor wir dein Restaurant betreten, haben wir bereits zugehört. Systematisch, datenbasiert, aus der Perspektive deiner Gäste.</p>
     <div class="dims">
-      <div class="dim reveal"><div class="dim-n">1</div><h3>Emotionale Verbindung</h3><p>Wie Kunden ihre Erfahrung fühlen</p></div>
-      <div class="dim reveal"><div class="dim-n">2</div><h3>Leichtigkeit</h3><p>Die Reibung in der Customer Journey</p></div>
-      <div class="dim reveal"><div class="dim-n">3</div><h3>Vertrauen</h3><p>Vertrauen in Ihr Markenversprechen</p></div>
-      <div class="dim reveal"><div class="dim-n">4</div><h3>Personalisierung</h3><p>Relevanz und Wiedererkennung</p></div>
-      <div class="dim reveal"><div class="dim-n">5</div><h3>Wahrgenommener Wert</h3><p>Der empfundene Wert der Erfahrung</p></div>
-      <div class="dim reveal"><div class="dim-n">6</div><h3>Zukunftsabsicht</h3><p>Wahrscheinlichkeit der Weiterempfehlung</p></div>
-    </div>
-    <div class="profiles-hd reveal">
-      <h2>Understanding Complexity</h2>
-      <p>Each customer profile is unique. Our framework captures the nuances that make every experience different.</p>
-    </div>
-    <div class="profiles-grid">
-      <div class="profile-item reveal">
-        <canvas class="pCv" data-p="0" width="160" height="160"></canvas>
-        <h4>The Demanding Customer</h4>
+      <div class="dim reveal">
+        <div class="dim-n">1</div>
+        <h3>Hören</h3>
+        <p>Wir analysieren deine Google-Bewertungen systematisch. Was loben Gäste? Was kritisieren sie? Wo entsteht Reibung — und in welchem Moment des Besuchs? Das alles passiert bevor wir dein Restaurant betreten.</p>
       </div>
-      <div class="profile-item reveal">
-        <canvas class="pCv" data-p="1" width="160" height="160"></canvas>
-        <h4>The Passionate One</h4>
+      <div class="dim reveal">
+        <div class="dim-n">2</div>
+        <h3>Übersetzen</h3>
+        <p>Dann kommen wir — als ganz normaler Gast. Vom ersten Eindruck an der Tür bis zum Abschied. Strukturiert, anhand eines klaren Audit-Rahmens. Nicht als Kritiker. Als jemand, der versteht, was dahintersteckt.</p>
       </div>
-      <div class="profile-item reveal">
-        <canvas class="pCv" data-p="2" width="160" height="160"></canvas>
-        <h4>The Silent One</h4>
-      </div>
-      <div class="profile-item reveal">
-        <canvas class="pCv" data-p="3" width="160" height="160"></canvas>
-        <h4>The Complex One</h4>
+      <div class="dim reveal">
+        <div class="dim-n">3</div>
+        <h3>Liefern</h3>
+        <p>Du bekommst einen klaren CX-Score, einen Benchmark gegen andere Restaurants in Augsburg und drei konkrete Maßnahmen — priorisiert nach Aufwand und Wirkung. Kein Design. Keine Kampagne. Nur Klarheit.</p>
       </div>
     </div>
+
+```
+<div class="profiles-hd reveal">
+  <h2>Jeder Gast ist anders.</h2>
+  <p>Unser Framework erfasst die Nuancen hinter jedem Erlebnis — und macht die Muster sichtbar, die im Alltag unsichtbar bleiben.</p>
+</div>
+<div class="profiles-grid">
+  <div class="profile-item reveal">
+    <canvas class="pCv" data-p="0" width="160" height="160"></canvas>
+    <h4>Der anspruchsvolle Gast</h4>
+  </div>
+  <div class="profile-item reveal">
+    <canvas class="pCv" data-p="1" width="160" height="160"></canvas>
+    <h4>Der begeisterte Stammkunde</h4>
+  </div>
+  <div class="profile-item reveal">
+    <canvas class="pCv" data-p="2" width="160" height="160"></canvas>
+    <h4>Der stille Unzufriedene</h4>
+  </div>
+  <div class="profile-item reveal">
+    <canvas class="pCv" data-p="3" width="160" height="160"></canvas>
+    <h4>Der komplexe Erlebnisgast</h4>
+  </div>
+</div>
+```
+
   </div>
 </section>
 
-
 <!-- ══ SERVICES ═════════════════════════════════ -->
+
 <section class="services" id="services">
   <div class="si">
-    <div class="eyebrow reveal">How We Work</div>
-    <h2 class="sh reveal">Hören. Verstehen. <em>Liefern.</em></h2>
-    <p class="sp reveal">Drei Schritte. Keine Theorie. Kein Berater-Kauderwelsch. Nur klare Erkenntnisse die Ihr Team sofort nutzen kann.</p>
+    <div class="eyebrow reveal">Was du bekommst</div>
+    <h2 class="sh reveal">Eine Analyse,<br><em>die du so noch nicht gesehen hast.</em></h2>
+    <p class="sp reveal">Aufgeschlüsselt nach den vier Bereichen, die den Unterschied machen. Konkret, verständlich, ohne Fachjargon.</p>
     <div class="svc-list">
       <div class="svc reveal">
         <div class="svc-num">1</div>
         <div class="svc-body">
-          <h3>Customer Experience Research</h3>
-          <p>Wir analysieren systematisch Ihr Kundenfeedback — Bewertungen, Muster, wiederkehrende Themen. Alles was Ihre Kunden sagen, aber nicht direkt zu Ihnen.</p>
+          <h3>Digitale Präsenz & Review-Analyse</h3>
+          <p>Wie wirkst du auf Google Maps, bevor ein Gast überhaupt dein Restaurant betritt? Wir analysieren dein Profil, deine Bewertungen und deine digitale Außenwirkung — systematisch, nicht nach Gefühl.</p>
           <div class="tags">
+            <span class="tag">Google Maps Audit</span>
             <span class="tag">Review-Analyse</span>
-            <span class="tag">Pain Point Clustering</span>
-            <span class="tag">CX-Diagnose</span>
+            <span class="tag">Digitaler Ersteindruck</span>
           </div>
         </div>
       </div>
       <div class="svc reveal">
         <div class="svc-num">2</div>
         <div class="svc-body">
-          <h3>Experience Strategy</h3>
-          <p>Wir übersetzen Kundenfeedback in Business-Sprache. Nicht Daten — Erkenntnisse. Nicht Probleme — Hebel. Klar, verständlich, priorisiert.</p>
+          <h3>Mystery Audit & CX-Score</h3>
+          <p>Ein strukturierter Besuch als normaler Gast — vom Ankommen bis zum Abschied. Du bekommst einen klaren Score nach vier Dimensionen: Digital Presence, Physical Experience, Service Quality, Review Generation.</p>
           <div class="tags">
-            <span class="tag">3–5 Maßnahmen</span>
-            <span class="tag">Priorisiert</span>
-            <span class="tag">Sofort umsetzbar</span>
+            <span class="tag">Mystery Visit</span>
+            <span class="tag">CX Maturity Score</span>
+            <span class="tag">0 – 100 Punkte</span>
           </div>
         </div>
       </div>
       <div class="svc reveal">
         <div class="svc-num">3</div>
         <div class="svc-body">
-          <h3>Measurement &amp; Tracking</h3>
-          <p>Monatliches Tracking ob es wirkt. Keine Schubladenreporte. Wir messen was sich verändert — und justieren wenn nötig.</p>
+          <h3>Benchmark & Maßnahmenplan</h3>
+          <p>Du siehst, wo du im Vergleich zu anderen Restaurants in Augsburg stehst — anonym, fair, datenbasiert. Und du bekommst drei konkrete Maßnahmen, die einen echten Unterschied machen.</p>
           <div class="tags">
-            <span class="tag">Monatlicher Check-in</span>
-            <span class="tag">KPIs</span>
-            <span class="tag">Case Study</span>
+            <span class="tag">Augsburg Benchmark</span>
+            <span class="tag">3 priorisierte Maßnahmen</span>
+            <span class="tag">Sofort umsetzbar</span>
           </div>
         </div>
       </div>
@@ -519,35 +563,78 @@
   </div>
 </section>
 
+<!-- ══ DATA SECTION ══════════════════════════════ -->
 
-<!-- ══ FOR WHO ═══════════════════════════════════ -->
-<section class="forwho" id="forwho">
+<section class="data-section">
   <div class="si">
-    <div class="eyebrow reveal">Für wen</div>
-    <h2 class="sh reveal">Für Businesses die<br><em>wirklich zuhören wollen.</em></h2>
-    <p class="sp reveal">ClaroCX ist nicht an eine Industrie gebunden. Überall wo Kunden Erfahrungen machen — und darüber reden — ist ClaroCX relevant.</p>
-    <div class="who-grid">
-      <div class="wc reveal"><div class="wc-icon">🍽</div><h3>Restaurants &amp; Gastronomie</h3><p>Inhabergeführte Betriebe die wissen wollen, was ihre Gäste wirklich denken — jenseits des persönlichen Gesprächs.</p></div>
-      <div class="wc reveal"><div class="wc-icon">🏨</div><h3>Hotels &amp; Hospitality</h3><p>Häuser die Online-Bewertungen systematisch nutzen wollen — nicht nur lesen, sondern verstehen und handeln.</p></div>
-      <div class="wc reveal"><div class="wc-icon">🏪</div><h3>Lokale Businesses</h3><p>Jedes Business mit Kundenkontakt das Feedback in Wachstum übersetzen will — ohne großes Analyse-Team.</p></div>
-    </div>
-    <div class="who-note reveal">
-      <p>"Wir suchen drei Pilot-Partner in Augsburg — zu Vorzugskonditionen und mit gemeinsamer Case Study."</p>
-      <span>Pilot · 2025</span>
+    <div class="eyebrow reveal">Die Daten dahinter</div>
+    <h2 class="sh reveal">Einmalig für Augsburg.</h2>
+    <p class="sp reveal">Auf Basis von tausenden Google-Bewertungen und strukturierten Audits entsteht gerade das erste datenbasierte CX-Bild der Augsburger Gastronomie. Welche Restaurants begeistern ihre Gäste wirklich? Wo entsteht Reibung, die niemand sieht? Was unterscheidet die Besten vom Durchschnitt?</p>
+    <div class="data-placeholder reveal">
+      <p>Die ersten Ergebnisse erscheinen hier in Kürze — anonym, fair, datenbasiert.<br>Die Antworten stecken in den Daten. Wir machen sie sichtbar.</p>
     </div>
   </div>
 </section>
 
+<!-- ══ FOR WHO ═══════════════════════════════════ -->
+
+<section class="forwho" id="forwho">
+  <div class="si">
+    <div class="eyebrow reveal">Für wen</div>
+    <h2 class="sh reveal">Für Restaurants,<br><em>die wirklich besser werden wollen.</em></h2>
+    <p class="sp reveal">ClaroCX richtet sich an inhabergeführte Restaurants in Augsburg. Menschen die investieren — in Küche, in Personal, in Qualität — und verstehen wollen, was davon beim Gast ankommt.</p>
+    <div class="who-grid">
+      <div class="wc reveal">
+        <div class="wc-icon">🍽</div>
+        <h3>Du investierst täglich</h3>
+        <p>In Qualität, in dein Team, in dein Konzept. ClaroCX zeigt dir, was davon bei deinen Gästen wirklich ankommt — und wo zwischen deinem Aufwand und ihrer Wahrnehmung etwas verloren geht.</p>
+      </div>
+      <div class="wc reveal">
+        <div class="wc-icon">📊</div>
+        <h3>Du willst Klarheit</h3>
+        <p>Nicht mehr Bauchgefühl, sondern ein klares Bild. Wo stehe ich? Was funktioniert? Was muss ich als erstes ändern? Drei Maßnahmen statt zehn Meinungen.</p>
+      </div>
+      <div class="wc reveal">
+        <div class="wc-icon">📈</div>
+        <h3>Du willst wachsen</h3>
+        <p>Mehr treue Stammkunden. Mehr positive Bewertungen. Mehr Covers — nicht durch Marketing, sondern durch ein Erlebnis, das Gäste von selbst weiterempfehlen.</p>
+      </div>
+    </div>
+    <div class="who-note reveal">
+      <p>"Ich suche einen Pilotpartner in Augsburg — ein Restaurant, das bereit ist, diesen Prozess als erstes mitzumachen. Ich entscheide auf Basis der Daten, welches Restaurant den größten Mehrwert daraus ziehen kann."</p>
+      <span>Pilot 2025 · infoclarocx@gmail.com</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ═════════════════════════════════════ -->
+
+<section class="about" id="ueber">
+  <div class="about-inner">
+    <div class="about-icon">
+      <canvas class="pCv" data-p="0" width="160" height="160"></canvas>
+    </div>
+    <div class="about-text">
+      <div class="eyebrow reveal">Wer dahinter steckt</div>
+      <h2 class="sh reveal" style="margin-bottom:2rem;">Ich bin Marketingprofi,<br><em>Spanier, seit 2011 in Augsburg zuhause.</em></h2>
+      <p class="reveal">Während meines Studiums habe ich in Restaurants gearbeitet. Gekocht, serviert, eingekauft. Irgendwann wollte ich verstehen, wie es in einer Profiküche wirklich zugeht, und habe Praktika gemacht. Zuletzt im Dallmayr in München. Zwei Michelin-Sterne. Ich habe dort gelernt, was es bedeutet, wenn jemand wirklich hohe Ansprüche hat. An sich selbst und an jeden Moment, den ein Gast erlebt.</p>
+      <p class="reveal">Den Weg als Koch bin ich nicht gegangen. Ich habe mich für Marketing entschieden, genauer gesagt für Marketing Intelligence. Die Frage, was Menschen wirklich wahrnehmen, was sie antreibt, was sie zurückbringt. Das hat mich immer mehr interessiert als jede Kampagne.</p>
+      <p class="reveal">ClaroCX verbindet beides. Die Küchenperspektive und die Datenperspektive. Das Verständnis für das, was Gastronomen täglich leisten und die Werkzeuge, um sichtbar zu machen, was Gäste wirklich erleben.</p>
+      <p class="reveal">Ich baue ClaroCX auf, weil ich etwas aufbauen will, das mir gehört und das echten Mehrwert schafft. Für Restaurants, die besser werden wollen. Und für Gäste in dieser Stadt, die das spüren werden.</p>
+    </div>
+  </div>
+</section>
 
 <!-- ══ CONTACT ═══════════════════════════════════ -->
+
 <section class="contact" id="kontakt">
   <div class="contact-inner">
     <div class="eyebrow reveal" style="color:rgba(247,244,238,0.4)">Kontakt</div>
-    <h2 class="reveal">Bereit für<br><em>mehr Klarheit?</em></h2>
-    <p class="reveal">Kein Sales-Call. Kein Pitch-Deck. Ein echtes Gespräch darüber was Ihre Kunden sagen — und was das für Ihr Business bedeutet.</p>
+    <h2 class="reveal">Du erkennst dich<br><em>in diesen Fragen wieder?</em></h2>
+    <p class="reveal">Kein Formular, kein Verkaufsgespräch. Nur ein erstes Kennenlernen — darüber, was deine Gäste erleben und was das für dein Restaurant bedeutet.</p>
     <div class="contact-actions reveal">
-      <a href="mailto:infoclarocx@gmail.com" class="btn-primary">Gespräch anfragen</a>
-      <a href="#methode" class="btn-outline">Mehr erfahren</a>
+      <a href="mailto:infoclarocx@gmail.com" class="btn-primary">infoclarocx@gmail.com</a>
+      <a href="#methode" class="btn-outline">Methode ansehen</a>
     </div>
     <div class="contact-footer reveal">
       <div class="wm wm-lg" style="justify-content:center; color:var(--linen)">
@@ -560,114 +647,116 @@
   </div>
 </section>
 
-
 <!-- ══ BRAND GUIDELINES ══════════════════════════ -->
+
 <section class="guidelines" id="guidelines">
   <div class="si-wide">
     <div class="eyebrow reveal">Brand Guidelines</div>
     <h2 class="gl-title reveal">ClaroCX Brand Identity</h2>
     <p class="gl-sub reveal">A reference for friends, peers and collaborators. Everything you need to understand the brand.</p>
 
-    <!-- LOGO SYSTEM -->
-    <div class="gl-section">
-      <div class="gl-section-title reveal">01 — Logo System</div>
-      <div class="logo-grid reveal">
-        <div class="logo-tile lt-light">
-          <div class="wm wm-md"><span class="wm-l">Clar</span><span class="wm-o"><svg class="glIcon" viewBox="0 0 100 100" fill="none"></svg></span><span class="wm-r">CX</span></div>
-          <div class="logo-tile-label">Primary — Light</div>
-        </div>
-        <div class="logo-tile lt-dark">
-          <div class="wm wm-md" style="color:var(--linen)"><span class="wm-l">Clar</span><span class="wm-o"><svg class="glIcon glIcon-inv" viewBox="0 0 100 100" fill="none"></svg></span><span class="wm-r">CX</span></div>
-          <div class="logo-tile-label">Primary — Dark</div>
-        </div>
-        <div class="logo-tile lt-blue">
-          <div class="wm wm-md" style="color:var(--linen)"><span class="wm-l">Clar</span><span class="wm-o"><svg class="glIcon glIcon-inv" viewBox="0 0 100 100" fill="none"></svg></span><span class="wm-r">CX</span></div>
-          <div class="logo-tile-label">Variant — Blue</div>
-        </div>
-        <div class="logo-tile lt-linen">
-          <div class="wm wm-md"><span class="wm-l">Clar</span><span class="wm-o"><svg class="glIcon" viewBox="0 0 100 100" fill="none"></svg></span><span class="wm-r">CX</span></div>
-          <div class="logo-tile-label">Variant — Linen</div>
-        </div>
-      </div>
+```
+<!-- LOGO SYSTEM -->
+<div class="gl-section">
+  <div class="gl-section-title reveal">01 — Logo System</div>
+  <div class="logo-grid reveal">
+    <div class="logo-tile lt-light">
+      <div class="wm wm-md"><span class="wm-l">Clar</span><span class="wm-o"><svg class="glIcon" viewBox="0 0 100 100" fill="none"></svg></span><span class="wm-r">CX</span></div>
+      <div class="logo-tile-label">Primary — Light</div>
     </div>
+    <div class="logo-tile lt-dark">
+      <div class="wm wm-md" style="color:var(--linen)"><span class="wm-l">Clar</span><span class="wm-o"><svg class="glIcon glIcon-inv" viewBox="0 0 100 100" fill="none"></svg></span><span class="wm-r">CX</span></div>
+      <div class="logo-tile-label">Primary — Dark</div>
+    </div>
+    <div class="logo-tile lt-blue">
+      <div class="wm wm-md" style="color:var(--linen)"><span class="wm-l">Clar</span><span class="wm-o"><svg class="glIcon glIcon-inv" viewBox="0 0 100 100" fill="none"></svg></span><span class="wm-r">CX</span></div>
+      <div class="logo-tile-label">Variant — Blue</div>
+    </div>
+    <div class="logo-tile lt-linen">
+      <div class="wm wm-md"><span class="wm-l">Clar</span><span class="wm-o"><svg class="glIcon" viewBox="0 0 100 100" fill="none"></svg></span><span class="wm-r">CX</span></div>
+      <div class="logo-tile-label">Variant — Linen</div>
+    </div>
+  </div>
+</div>
 
-    <!-- ICON MARK -->
-    <div class="gl-section">
-      <div class="gl-section-title reveal">02 — Icon Mark · Different Customer Profiles</div>
-      <div class="icon-showcase reveal">
-        <div class="ic-tile ic-light"><canvas class="pCv" data-p="0" width="100" height="100"></canvas><div class="ic-label">Profile A · 100px</div></div>
-        <div class="ic-tile ic-dark"><canvas class="pCv-inv" data-p="1" width="100" height="100"></canvas><div class="ic-label">Profile B · Dark</div></div>
-        <div class="ic-tile ic-light"><canvas class="pCv" data-p="2" width="64" height="64"></canvas><div class="ic-label">Profile C · 64px</div></div>
-        <div class="ic-tile ic-dark"><canvas class="pCv-inv" data-p="3" width="32" height="32"></canvas><div class="ic-label">Profile D · 32px</div></div>
-        <div class="ic-tile ic-light"><canvas class="pCv" data-p="0" width="16" height="16"></canvas><div class="ic-label">Favicon · 16px</div></div>
-      </div>
-    </div>
+<!-- ICON MARK -->
+<div class="gl-section">
+  <div class="gl-section-title reveal">02 — Icon Mark · Verschiedene Gastprofile</div>
+  <div class="icon-showcase reveal">
+    <div class="ic-tile ic-light"><canvas class="pCv" data-p="0" width="100" height="100"></canvas><div class="ic-label">Profil A · 100px</div></div>
+    <div class="ic-tile ic-dark"><canvas class="pCv-inv" data-p="1" width="100" height="100"></canvas><div class="ic-label">Profil B · Dark</div></div>
+    <div class="ic-tile ic-light"><canvas class="pCv" data-p="2" width="64" height="64"></canvas><div class="ic-label">Profil C · 64px</div></div>
+    <div class="ic-tile ic-dark"><canvas class="pCv-inv" data-p="3" width="32" height="32"></canvas><div class="ic-label">Profil D · 32px</div></div>
+    <div class="ic-tile ic-light"><canvas class="pCv" data-p="0" width="16" height="16"></canvas><div class="ic-label">Favicon · 16px</div></div>
+  </div>
+</div>
 
-    <!-- COLORS -->
-    <div class="gl-section">
-      <div class="gl-section-title reveal">03 — Color Palette</div>
-      <div class="swatches reveal">
-        <div class="sw"><div class="sw-color" style="background:#1E1C18"></div><div class="sw-info"><div class="sw-name">Dark</div><div class="sw-hex">#1E1C18</div><div class="sw-role">Primary / Text</div></div></div>
-        <div class="sw"><div class="sw-color" style="background:#2E5F8A"></div><div class="sw-info"><div class="sw-name">Blue</div><div class="sw-hex">#2E5F8A</div><div class="sw-role">Main Accent</div></div></div>
-        <div class="sw"><div class="sw-color" style="background:#4A7FA8"></div><div class="sw-info"><div class="sw-name">Blue Mid</div><div class="sw-hex">#4A7FA8</div><div class="sw-role">Highlights</div></div></div>
-        <div class="sw"><div class="sw-color" style="background:#EBF2F8; border:1px solid #D8D2C4"></div><div class="sw-info"><div class="sw-name">Blue Pale</div><div class="sw-hex">#EBF2F8</div><div class="sw-role">Backgrounds</div></div></div>
-        <div class="sw"><div class="sw-color" style="background:#F7F4EE; border:1px solid #D8D2C4"></div><div class="sw-info"><div class="sw-name">Linen</div><div class="sw-hex">#F7F4EE</div><div class="sw-role">Base Background</div></div></div>
-        <div class="sw"><div class="sw-color" style="background:#8C8880"></div><div class="sw-info"><div class="sw-name">Stone</div><div class="sw-hex">#8C8880</div><div class="sw-role">Secondary Text</div></div></div>
-      </div>
-    </div>
+<!-- COLORS -->
+<div class="gl-section">
+  <div class="gl-section-title reveal">03 — Farbpalette</div>
+  <div class="swatches reveal">
+    <div class="sw"><div class="sw-color" style="background:#1E1C18"></div><div class="sw-info"><div class="sw-name">Warm Ink</div><div class="sw-hex">#1E1C18</div><div class="sw-role">Primary / Text</div></div></div>
+    <div class="sw"><div class="sw-color" style="background:#2E5F8A"></div><div class="sw-info"><div class="sw-name">Mediterranean Blue</div><div class="sw-hex">#2E5F8A</div><div class="sw-role">Main Accent</div></div></div>
+    <div class="sw"><div class="sw-color" style="background:#4A7FA8"></div><div class="sw-info"><div class="sw-name">Blue Mid</div><div class="sw-hex">#4A7FA8</div><div class="sw-role">Highlights</div></div></div>
+    <div class="sw"><div class="sw-color" style="background:#EBF2F8; border:1px solid #D8D2C4"></div><div class="sw-info"><div class="sw-name">Blue Pale</div><div class="sw-hex">#EBF2F8</div><div class="sw-role">Backgrounds</div></div></div>
+    <div class="sw"><div class="sw-color" style="background:#F7F4EE; border:1px solid #D8D2C4"></div><div class="sw-info"><div class="sw-name">Linen</div><div class="sw-hex">#F7F4EE</div><div class="sw-role">Base Background</div></div></div>
+    <div class="sw"><div class="sw-color" style="background:#8C8880"></div><div class="sw-info"><div class="sw-name">Stone</div><div class="sw-hex">#8C8880</div><div class="sw-role">Secondary Text</div></div></div>
+  </div>
+</div>
 
-    <!-- TYPOGRAPHY -->
-    <div class="gl-section">
-      <div class="gl-section-title reveal">04 — Typography</div>
-      <div class="type-rows reveal">
-        <div class="type-row">
-          <div class="type-meta">Lora<br>400 · Serif<br>Headlines</div>
-          <div style="font-family:'Lora',serif; font-size:2.4rem; font-weight:400; line-height:1.2">Ihre Kunden sagen alles.<br><em style="color:var(--blue)">Hören Sie zu?</em></div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta">Lora<br>400 italic<br>Pull Quotes</div>
-          <div style="font-family:'Lora',serif; font-size:1.4rem; font-style:italic; color:var(--blue); border-left:2px solid var(--blue); padding-left:1.5rem; max-width:500px">"Translating human experience into business insight."</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta">Montserrat<br>400 · Sans<br>Body Text</div>
-          <div style="font-family:'Montserrat',sans-serif; font-size:0.95rem; line-height:1.85; max-width:520px; color:var(--dark); opacity:0.8">ClaroCX hört zu, versteht und übersetzt — das Erlebnis Ihrer Kunden in einen konkreten Plan, den Ihr Business diese Woche umsetzen kann. Kein Berater-Kauderwelsch. Nur Klarheit.</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta">Montserrat<br>600 · Labels<br>Eyebrows</div>
-          <div style="font-family:'Montserrat',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--blue)">Customer Experience · Augsburg · 2025</div>
-        </div>
-      </div>
+<!-- TYPOGRAPHY -->
+<div class="gl-section">
+  <div class="gl-section-title reveal">04 — Typografie</div>
+  <div class="type-rows reveal">
+    <div class="type-row">
+      <div class="type-meta">Lora<br>400 · Serif<br>Headlines</div>
+      <div style="font-family:'Lora',serif; font-size:2.4rem; font-weight:400; line-height:1.2">Deine Gäste entscheiden.<br><em style="color:var(--blue)">Weißt du, was sie bewegt?</em></div>
     </div>
+    <div class="type-row">
+      <div class="type-meta">Lora<br>400 italic<br>Pull Quotes</div>
+      <div style="font-family:'Lora',serif; font-size:1.4rem; font-style:italic; color:var(--blue); border-left:2px solid var(--blue); padding-left:1.5rem; max-width:500px">"Küchenperspektive trifft Datenperspektive."</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">Montserrat<br>400 · Sans<br>Body Text</div>
+      <div style="font-family:'Montserrat',sans-serif; font-size:0.95rem; line-height:1.85; max-width:520px; color:var(--dark); opacity:0.8">ClaroCX macht sichtbar, was zwischen Erlebnis und Entscheidung passiert. Kein Design. Keine Kampagne. Nur Klarheit.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">Montserrat<br>600 · Labels<br>Eyebrows</div>
+      <div style="font-family:'Montserrat',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--blue)">Customer Experience · Augsburg · 2025</div>
+    </div>
+  </div>
+</div>
 
-    <!-- VOICE -->
-    <div class="gl-section">
-      <div class="gl-section-title reveal">05 — Brand Voice</div>
-      <div class="voice-table reveal">
-        <div class="voice-head"><div class="vh">✓ ClaroCX sounds like</div><div class="vh">✗ Not ClaroCX</div></div>
-        <div class="voice-pair">
-          <div class="vp-yes">"34% of your negative reviews mention waiting time. That's the first lever — and it costs nothing."</div>
-          <div class="vp-no">"Im Rahmen einer ganzheitlichen Serviceoptimierung identifizieren wir Effizienzpotenziale."</div>
-        </div>
-        <div class="voice-pair">
-          <div class="vp-yes">"You know your business best. We hear what your customers don't say directly to you."</div>
-          <div class="vp-no">"Viele Unternehmen unterschätzen die Bedeutung von Kundenfeedback."</div>
-        </div>
-        <div class="voice-pair">
-          <div class="vp-yes">"AI is the tool. The promise is us."</div>
-          <div class="vp-no">"Unsere KI-gestützte Plattform revolutioniert Ihr Customer Experience Management."</div>
-        </div>
-        <div class="voice-pair">
-          <div class="vp-yes">"3 actions. This week. Measurable."</div>
-          <div class="vp-no">"Wir empfehlen, die Servicequalität mittelfristig strategisch weiterzuentwickeln."</div>
-        </div>
-      </div>
+<!-- VOICE -->
+<div class="gl-section">
+  <div class="gl-section-title reveal">05 — Brand Voice</div>
+  <div class="voice-table reveal">
+    <div class="voice-head"><div class="vh">✓ ClaroCX klingt so</div><div class="vh">✗ Nicht ClaroCX</div></div>
+    <div class="voice-pair">
+      <div class="vp-yes">"34% deiner negativen Bewertungen erwähnen Wartezeit. Das ist der erste Hebel — und er kostet nichts."</div>
+      <div class="vp-no">"Im Rahmen einer ganzheitlichen Serviceoptimierung identifizieren wir Effizienzpotenziale."</div>
     </div>
+    <div class="voice-pair">
+      <div class="vp-yes">"Du kennst dein Restaurant am besten. Wir hören, was deine Gäste dir nicht direkt sagen."</div>
+      <div class="vp-no">"Viele Unternehmen unterschätzen die Bedeutung von Kundenfeedback."</div>
+    </div>
+    <div class="voice-pair">
+      <div class="vp-yes">"KI ist das Werkzeug. Das Versprechen sind wir."</div>
+      <div class="vp-no">"Unsere KI-gestützte Plattform revolutioniert dein Customer Experience Management."</div>
+    </div>
+    <div class="voice-pair">
+      <div class="vp-yes">"3 Maßnahmen. Diese Woche. Messbar."</div>
+      <div class="vp-no">"Wir empfehlen, die Servicequalität mittelfristig strategisch weiterzuentwickeln."</div>
+    </div>
+  </div>
+</div>
+```
 
   </div>
 </section>
 
-
 <!-- ══ FOOTER ════════════════════════════════════ -->
+
 <footer>
   <div class="wm wm-sm" style="color:rgba(247,244,238,0.45)">
     <span class="wm-l">Clar</span>
@@ -677,12 +766,11 @@
   <div class="fl">
     <a href="#methode">Methode</a>
     <a href="#forwho">Für wen</a>
+    <a href="#ueber">Über mich</a>
     <a href="#guidelines">Brand</a>
-    <a href="#kontakt">Kontakt</a>
     <a href="mailto:infoclarocx@gmail.com">infoclarocx@gmail.com</a>
   </div>
 </footer>
-
 
 <script>
 // ── ICON DRAWING ─────────────────────────────────
@@ -695,24 +783,19 @@ var PROFILES = [
   [0.90, 0.20, 0.75, 0.95, 0.15, 0.80]
 ];
 
-// Ax point helper
 function ap(cx, cy, r, i) {
   var a = (i / AXES) * Math.PI * 2 - Math.PI / 2;
   return { x: cx + Math.cos(a) * r, y: cy + Math.sin(a) * r };
 }
 
-// Draw SVG icon (the "o" in wordmark)
 function buildSvgIcon(svg, color) {
   color = color || BLUE;
-  var S = 100, cx = 50, cy = 50;
-  var R = 37, innerR = 18;
+  var cx = 50, cy = 50, R = 37, innerR = 18;
   var vals = [0.85, 0.7, 0.8, 0.75, 0.82, 0.68];
-
   var ns = 'http://www.w3.org/2000/svg';
   svg.innerHTML = '';
   svg.setAttribute('viewBox', '0 0 100 100');
 
-  // Main circle
   var circle = document.createElementNS(ns, 'circle');
   circle.setAttribute('cx', cx); circle.setAttribute('cy', cy);
   circle.setAttribute('r', R);
@@ -721,7 +804,6 @@ function buildSvgIcon(svg, color) {
   circle.setAttribute('stroke-width', '3.5');
   svg.appendChild(circle);
 
-  // Organic polygon
   var poly = document.createElementNS(ns, 'polygon');
   var pts = vals.map(function(v, i) {
     var p = ap(cx, cy, v * innerR, i);
@@ -735,7 +817,6 @@ function buildSvgIcon(svg, color) {
   poly.setAttribute('stroke-linejoin', 'round');
   svg.appendChild(poly);
 
-  // 6 dimension dots
   for (var i = 0; i < AXES; i++) {
     var p = ap(cx, cy, R, i);
     var dot = document.createElementNS(ns, 'circle');
@@ -746,7 +827,6 @@ function buildSvgIcon(svg, color) {
     svg.appendChild(dot);
   }
 
-  // Center dot
   var cdot = document.createElementNS(ns, 'circle');
   cdot.setAttribute('cx', cx); cdot.setAttribute('cy', cy);
   cdot.setAttribute('r', '4');
@@ -754,7 +834,6 @@ function buildSvgIcon(svg, color) {
   svg.appendChild(cdot);
 }
 
-// Init all SVG icons
 buildSvgIcon(document.getElementById('navIcon'));
 buildSvgIcon(document.getElementById('heroWmIcon'));
 buildSvgIcon(document.getElementById('footerIcon'), 'rgba(247,244,238,0.5)');
@@ -774,13 +853,11 @@ function drawStaticIcon(canvas, profileIndex, inverted) {
 
   ctx.clearRect(0, 0, W, W);
 
-  // Main circle
   ctx.beginPath();
   ctx.arc(cx, cy, R, 0, Math.PI * 2);
   ctx.strokeStyle = color; ctx.lineWidth = W > 64 ? 2.5 : 2;
   ctx.stroke();
 
-  // Organic polygon
   ctx.beginPath();
   vals.forEach(function(v, i) {
     var p = ap(cx, cy, v * innerR, i);
@@ -790,7 +867,6 @@ function drawStaticIcon(canvas, profileIndex, inverted) {
   ctx.fillStyle = fillColor; ctx.fill();
   ctx.strokeStyle = color; ctx.lineWidth = W > 32 ? 1.8 : 1.2; ctx.stroke();
 
-  // 6 dimension dots
   if (W >= 32) {
     for (var i = 0; i < AXES; i++) {
       var p = ap(cx, cy, R, i);
@@ -799,7 +875,6 @@ function drawStaticIcon(canvas, profileIndex, inverted) {
     }
   }
 
-  // Center dot
   ctx.beginPath();
   ctx.arc(cx, cy, W > 64 ? 3 : W > 32 ? 2 : 1.5, 0, Math.PI * 2);
   ctx.fillStyle = color; ctx.fill();
@@ -840,13 +915,11 @@ function eIO(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
 function drawHeroIcon(vals, dotAlpha, shapeAlpha, circleAlpha) {
   hctx.clearRect(0, 0, 380, 380);
 
-  // Main circle
   hctx.beginPath();
   hctx.arc(HCX, HCY, HR, 0, Math.PI * 2);
   hctx.strokeStyle = 'rgba(46,95,138,' + (circleAlpha || 1) + ')';
   hctx.lineWidth = 3; hctx.stroke();
 
-  // Dimension dots
   if (dotAlpha > 0) {
     for (var i = 0; i < AXES; i++) {
       var p = hap(i, HR);
@@ -856,7 +929,6 @@ function drawHeroIcon(vals, dotAlpha, shapeAlpha, circleAlpha) {
     }
   }
 
-  // Organic shape
   if (shapeAlpha > 0 && vals) {
     hctx.beginPath();
     vals.forEach(function(p, i) {
@@ -868,7 +940,6 @@ function drawHeroIcon(vals, dotAlpha, shapeAlpha, circleAlpha) {
     hctx.strokeStyle = 'rgba(46,95,138,' + shapeAlpha + ')';
     hctx.lineWidth = 2.5; hctx.stroke();
 
-    // Shape dots
     vals.forEach(function(p) {
       hctx.beginPath(); hctx.arc(p.x, p.y, 3.5, 0, Math.PI * 2);
       hctx.fillStyle = 'rgba(74,127,168,' + shapeAlpha * 0.9 + ')';
@@ -876,16 +947,13 @@ function drawHeroIcon(vals, dotAlpha, shapeAlpha, circleAlpha) {
     });
   }
 
-  // Center dot
   hctx.beginPath(); hctx.arc(HCX, HCY, 5, 0, Math.PI * 2);
   hctx.fillStyle = 'rgba(46,95,138,' + (shapeAlpha || circleAlpha || 0.6) + ')';
   hctx.fill();
 
-  // Sync wordmark icon polygon
   syncWmPoly(vals, shapeAlpha);
 }
 
-// Sync the hero wordmark SVG icon with animation
 function syncWmPoly(pts, alpha) {
   var svg = document.getElementById('heroWmIcon');
   if (!svg) return;
@@ -903,7 +971,7 @@ function syncWmPoly(pts, alpha) {
   }
   if (!pts || alpha <= 0) { existPoly.style.opacity = 0; return; }
   existPoly.style.opacity = alpha;
-  var cx = 50, cy = 50, R = 37, innerR = 18;
+  var cx = 50, cy = 50, innerR = 18;
   var vals = PROFILES[curP];
   var polyPts = vals.map(function(v, i) {
     var p = ap(cx, cy, v * innerR, i);
@@ -921,17 +989,14 @@ function tick() {
     t = eOut(Math.min(fr / REVEAL, 1));
     drawHeroIcon(hPts(pv, t), t, t, t);
     if (fr >= REVEAL) { phase = 'hold'; fr = 0; }
-
   } else if (phase === 'hold') {
     drawHeroIcon(hPts(pv), 1, 1, 1);
     if (fr >= HOLD) { phase = 'dissolve'; fr = 0; }
-
   } else if (phase === 'dissolve') {
     t = eIO(Math.min(fr / DISSOLVE, 1));
     pts = lerpPts(hPts(pv), hPts(nv), t);
     drawHeroIcon(pts, 1, 1 - t * 0.3, 1);
     if (fr >= DISSOLVE) { phase = 'pause'; fr = 0; }
-
   } else {
     var pulse = 0.3 + 0.25 * Math.sin(fr * 0.2);
     drawHeroIcon(null, pulse, 0, pulse);
@@ -959,5 +1024,6 @@ var obs = new IntersectionObserver(function(entries) {
 reveals.forEach(function(el) { obs.observe(el); });
 setTimeout(function() { reveals.forEach(function(el) { el.classList.add('visible'); }); }, 900);
 </script>
+
 </body>
 </html>
