@@ -414,7 +414,7 @@ to   { opacity:1; transform:translateY(0); }
 
 <div class="hero">
   <div class="hero-icon">
-    <canvas id="heroCanvas" width="380" height="380"></canvas>
+    <svg id="heroSvg" viewBox="0 0 380 380" width="380" height="380" style="max-width:100%;height:auto;display:block;"></svg>
   </div>
   <div class="hero-content">
     <div class="hero-eyebrow">Customer Experience · Augsburg</div>
@@ -888,128 +888,73 @@ document.querySelectorAll('.pCv-inv').forEach(function(c) {
   drawStaticIcon(c, parseInt(c.dataset.p), true);
 });
 
-// ── HERO ANIMATED RADAR ──────────────────────────
-var hc = document.getElementById('heroCanvas');
-var hctx = hc.getContext('2d');
-var HCX = 190, HCY = 190, HR = 165;
-var innerHR = HR * 0.52;
-var curP = 0, nxtP = 1, phase = 'reveal', fr = 0;
-var REVEAL = 30, HOLD = 35, DISSOLVE = 22, PAUSE = 12;
-
-function hap(i, r) { return ap(HCX, HCY, r, i); }
-
-function hPts(vals, t) {
-  return vals.map(function(v, i) {
-    return hap(i, v * innerHR * (t === undefined ? 1 : t));
-  });
-}
-
-function lerpPts(a, b, t) {
-  return a.map(function(p, i) {
-    return { x: p.x + (b[i].x - p.x) * t, y: p.y + (b[i].y - p.y) * t };
-  });
-}
-
-function eOut(t) { return 1 - Math.pow(1 - t, 2.5); }
-function eIO(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
-
-function drawHeroIcon(vals, dotAlpha, shapeAlpha, circleAlpha) {
-  hctx.clearRect(0, 0, 380, 380);
-
-  hctx.beginPath();
-  hctx.arc(HCX, HCY, HR, 0, Math.PI * 2);
-  hctx.strokeStyle = 'rgba(46,95,138,' + (circleAlpha || 1) + ')';
-  hctx.lineWidth = 3; hctx.stroke();
-
-  if (dotAlpha > 0) {
-    for (var i = 0; i < AXES; i++) {
-      var p = hap(i, HR);
-      hctx.beginPath(); hctx.arc(p.x, p.y, 5, 0, Math.PI * 2);
-      hctx.fillStyle = 'rgba(46,95,138,' + dotAlpha + ')';
-      hctx.fill();
-    }
-  }
-
-  if (shapeAlpha > 0 && vals) {
-    hctx.beginPath();
-    vals.forEach(function(p, i) {
-      i === 0 ? hctx.moveTo(p.x, p.y) : hctx.lineTo(p.x, p.y);
-    });
-    hctx.closePath();
-    hctx.fillStyle = 'rgba(46,95,138,' + (shapeAlpha * 0.22) + ')';
-    hctx.fill();
-    hctx.strokeStyle = 'rgba(46,95,138,' + shapeAlpha + ')';
-    hctx.lineWidth = 2.5; hctx.stroke();
-
-    vals.forEach(function(p) {
-      hctx.beginPath(); hctx.arc(p.x, p.y, 3.5, 0, Math.PI * 2);
-      hctx.fillStyle = 'rgba(74,127,168,' + shapeAlpha * 0.9 + ')';
-      hctx.fill();
-    });
-  }
-
-  hctx.beginPath(); hctx.arc(HCX, HCY, 5, 0, Math.PI * 2);
-  hctx.fillStyle = 'rgba(46,95,138,' + (shapeAlpha || circleAlpha || 0.6) + ')';
-  hctx.fill();
-
-  syncWmPoly(vals, shapeAlpha);
-}
-
-function syncWmPoly(pts, alpha) {
-  var svg = document.getElementById('heroWmIcon');
+// ── HERO SVG RADAR ANIMATION ─────────────────────
+(function() {
+  var svg = document.getElementById('heroSvg');
   if (!svg) return;
-  var existPoly = svg.querySelector('.anim-poly');
-  if (!existPoly) {
-    var ns = 'http://www.w3.org/2000/svg';
-    existPoly = document.createElementNS(ns, 'polygon');
-    existPoly.setAttribute('class', 'anim-poly');
-    existPoly.setAttribute('fill', BLUE);
-    existPoly.setAttribute('fill-opacity', '0.3');
-    existPoly.setAttribute('stroke', BLUE);
-    existPoly.setAttribute('stroke-width', '2.5');
-    existPoly.setAttribute('stroke-linejoin', 'round');
-    svg.appendChild(existPoly);
-  }
-  if (!pts || alpha <= 0) { existPoly.style.opacity = 0; return; }
-  existPoly.style.opacity = alpha;
-  var cx = 50, cy = 50, innerR = 18;
-  var vals = PROFILES[curP];
-  var polyPts = vals.map(function(v, i) {
-    var p = ap(cx, cy, v * innerR, i);
-    return p.x.toFixed(2) + ',' + p.y.toFixed(2);
-  }).join(' ');
-  existPoly.setAttribute('points', polyPts);
-}
+  var ns = 'http://www.w3.org/2000/svg';
+  var CX = 190, CY = 190, R = 165, innerR = 86;
 
-function tick() {
-  fr++;
-  var pv = PROFILES[curP], nv = PROFILES[nxtP];
-  var t, pts;
-
-  if (phase === 'reveal') {
-    t = eOut(Math.min(fr / REVEAL, 1));
-    drawHeroIcon(hPts(pv, t), t, t, t);
-    if (fr >= REVEAL) { phase = 'hold'; fr = 0; }
-  } else if (phase === 'hold') {
-    drawHeroIcon(hPts(pv), 1, 1, 1);
-    if (fr >= HOLD) { phase = 'dissolve'; fr = 0; }
-  } else if (phase === 'dissolve') {
-    t = eIO(Math.min(fr / DISSOLVE, 1));
-    pts = lerpPts(hPts(pv), hPts(nv), t);
-    drawHeroIcon(pts, 1, 1 - t * 0.3, 1);
-    if (fr >= DISSOLVE) { phase = 'pause'; fr = 0; }
-  } else {
-    var pulse = 0.3 + 0.25 * Math.sin(fr * 0.2);
-    drawHeroIcon(null, pulse, 0, pulse);
-    if (fr >= PAUSE) {
-      curP = nxtP;
-      nxtP = (nxtP + 1) % PROFILES.length;
-      phase = 'reveal'; fr = 0;
-    }
+  function pt(i, r, vals) {
+    var a = (i / 6) * Math.PI * 2 - Math.PI / 2;
+    var rv = r * (vals ? vals[i] : 1);
+    return { x: CX + Math.cos(a) * rv, y: CY + Math.sin(a) * rv };
   }
-  requestAnimationFrame(tick);
-}
-tick();
+
+  function ptsStr(vals) {
+    return PROFILES[vals].map(function(v, i) {
+      var p = pt(i, innerR, PROFILES[vals]);
+      return p.x.toFixed(1) + ',' + p.y.toFixed(1);
+    }).join(' ');
+  }
+
+  // Main circle
+  var circle = document.createElementNS(ns, 'circle');
+  circle.setAttribute('cx', CX); circle.setAttribute('cy', CY);
+  circle.setAttribute('r', R);
+  circle.setAttribute('fill', 'none');
+  circle.setAttribute('stroke', '#2E5F8A');
+  circle.setAttribute('stroke-width', '3');
+  svg.appendChild(circle);
+
+  // Axis dots
+  for (var i = 0; i < 6; i++) {
+    var p = pt(i, R, null);
+    var dot = document.createElementNS(ns, 'circle');
+    dot.setAttribute('cx', p.x.toFixed(1));
+    dot.setAttribute('cy', p.y.toFixed(1));
+    dot.setAttribute('r', '5');
+    dot.setAttribute('fill', '#2E5F8A');
+    svg.appendChild(dot);
+  }
+
+  // Center dot
+  var cdot = document.createElementNS(ns, 'circle');
+  cdot.setAttribute('cx', CX); cdot.setAttribute('cy', CY);
+  cdot.setAttribute('r', '5');
+  cdot.setAttribute('fill', '#2E5F8A');
+  svg.appendChild(cdot);
+
+  // Animated polygon
+  var poly = document.createElementNS(ns, 'polygon');
+  poly.setAttribute('fill', 'rgba(46,95,138,0.2)');
+  poly.setAttribute('stroke', '#2E5F8A');
+  poly.setAttribute('stroke-width', '2.5');
+  poly.setAttribute('stroke-linejoin', 'round');
+  svg.appendChild(poly);
+
+  // Animate cycling through profiles
+  var cur = 0;
+  function updatePoly() {
+    poly.setAttribute('points', ptsStr(cur));
+    cur = (cur + 1) % PROFILES.length;
+  }
+  updatePoly();
+  setInterval(updatePoly, 2000);
+
+  // Also sync wordmark icon
+  buildSvgIcon(document.getElementById('heroWmIcon'));
+})();
 
 // ── NAV + REVEAL ────────────────────────────────
 window.addEventListener('scroll', function() {
